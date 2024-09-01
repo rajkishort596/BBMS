@@ -1,0 +1,81 @@
+.dashboard-header {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  background-color: var(--White);
+  @media screen and (min-width: 64em) {
+    grid-row: 1/2;
+    padding-inline: 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .container {
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  .profile {
+    --gap: 0.5rem;
+    z-index: 100;
+    img {
+      width: 30px;
+    }
+    .name {
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+    .email {
+      font-weight: 400;
+      font-size: 0.56rem;
+    }
+  }
+  .logout {
+    a {
+      align-items: center;
+      --gap: 1rem;
+    }
+    .hideformobile {
+      display: none;
+      @media screen and (min-width: 64em) {
+        display: block;
+        color: var(--Red);
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+    }
+    img {
+      transform: scale(0.7);
+    }
+  }
+}
+//Logo styles
+
+.dashboard-wrapper {
+  .logo {
+    width: 100%;
+    height: 100%;
+    background-color: var(--Soft-Red);
+    display: none;
+    z-index: 100;
+    position: sticky;
+    top: 0;
+    svg {
+      width: 160px;
+      path {
+        @media screen and (min-width: 64em) {
+          fill: var(--White);
+        }
+      }
+    }
+    @media screen and (min-width: 64em) {
+      align-self: center;
+      justify-self: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-column: 1/2;
+      grid-row: 1/2;
+    }
+  }
+}

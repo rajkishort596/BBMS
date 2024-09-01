@@ -1,0 +1,55 @@
+:root {
+  /* Primary */
+
+  --Red: hsl(0, 100%, 50%);
+  --Red-Header: hsl(0, 67%, 46%);
+  --Very-Soft-Red: hsl(2, 94%, 60%);
+  --Soft-Red: hsl(0, 94%, 65%);
+  --Soft-Dark-Red: hsl(357, 83%, 30%);
+  --Dark-Red: hsl(357, 92%, 30%); // Login and Register Btn GradientColor1
+  --Very-Dark-Red: hsl(0, 100%, 30%); // Login and Register Btn GradientColor2
+  --Light-Green: hsla(120, 100%, 25%, 0.5);
+  --Green: hsl(120, 100%, 25%);
+  --Light-Yellow: hsla(54, 55%, 51%, 0.5);
+  --Yellow: hsl(54, 55%, 51%);
+  --Very-light-Blue: hsl(200, 43%, 95%);
+  --Blue: hsl(220, 100%, 52%);
+  --Cyan: hsl(192, 89%, 59%);
+  --Orange: hsl(39, 100%, 50%);
+
+  /* Neutral */
+
+  --White: hsl(0, 0%, 100%);
+  --Black: hsl(0, 0%, 0%);
+  --Grayish-Bg: hsl(0, 0%, 92%); // for Dashboard Background
+  --Light-Gray: hsl(0, 0%, 73%); // for paragrapghs
+  --Gray: hsl(0, 0%, 94%); // for input Fields
+  --Dark-Gray: hsl(0, 0%, 41%); // for input Labels
+  --Very-Dark-Gray: #333333; // for input Field Stroke
+
+  /* font-sizes */
+  // --fs-900: clamp(5rem, 5vw + 1rem, 6rem); //80px to 96px
+  // --fs-800: 4rem; //64px
+  // --fs-700: 2.25rem; //36px
+  // --fs-600: 2rem; //32px
+  // --fs-500: 1.875rem; //30px
+  // --fs-400: 1.25rem; //20px
+  // --fs-300: 1rem; //16px
+  // --fs-200: 0.875rem; //14px
+
+  /* font-sizes */
+  --fs-900: 3rem; //48px
+  --fs-800: 1.875rem; //30px
+  --fs-700: 2.25rem; //36px
+  --fs-600: 2rem; //32px
+  --fs-500: 1rem; //30px
+  --fs-400: 1.25rem; //20px
+  --fs-300: 1rem; //16px
+  --fs-200: 0.875rem; //14px
+
+  /* font-families */
+  --ff-Merriweather: "Merriweather", sans-serif;
+  --ff-Poppins: "Poppins", sans-serif;
+  --ff-Inter: "Inter", sans-serif;
+  --ff-Raleway: "Raleway", sans-serif;
+}
