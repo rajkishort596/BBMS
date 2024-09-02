@@ -1,0 +1,106 @@
+.donor-dashboard {
+  background-color: var(--Grayish-Bg);
+}
+
+.donor-dashboard .container {
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  --gap: 2rem;
+}
+
+@media screen and (min-width: 64em) {
+  .donor-dashboard .container {
+    -ms-grid-columns: 1fr 2fr;
+        grid-template-columns: 1fr 2fr;
+    -ms-grid-rows: auto 1fr;
+        grid-template-rows: auto 1fr;
+  }
+}
+
+.donor-dashboard .container .welcome__card {
+  --gap: 0.5rem;
+  gap: 3.5rem;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  width: 100%;
+  max-width: unset;
+}
+
+.donor-dashboard .container .welcome__card .welcome {
+  font-size: 1rem;
+  color: var(--Black);
+  font-weight: 500;
+}
+
+.donor-dashboard .container .welcome__card .username {
+  font-size: 1.25rem;
+  color: var(--Black);
+  font-weight: 700;
+}
+
+.donor-dashboard .container .welcome__card .blood-group {
+  position: relative;
+}
+
+.donor-dashboard .container .welcome__card .blood-group::after {
+  content: attr(data-blood-type);
+  position: absolute;
+  top: -15px;
+  right: -25px;
+  padding: 5px 10px;
+  font-size: 14px;
+  color: #000;
+  font-weight: 700;
+}
+
+.donor-dashboard .container .welcome__card .last-donated {
+  color: var(--Black);
+  font-size: 0.875rem;
+}
+
+.donor-dashboard .container .welcome__card .location p {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--Black);
+}
+
+.donor-dashboard .container .welcome__card .location img {
+  width: 20px;
+  aspect-ratio: 1;
+}
+
+.donor-dashboard .container .welcome__card .quantity img {
+  width: 30px;
+}
+
+.donor-dashboard .container .welcome__card .quantity p {
+  font-weight: 700;
+}
+
+.donor-dashboard .container .donation_chart {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  max-width: unset;
+  width: 100%;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+}
+
+@media screen and (max-width: 48em) {
+  .donor-dashboard .container .donation_chart canvas {
+    width: 100% !important;
+  }
+}
+/*# sourceMappingURL=donordashboard.css.map */

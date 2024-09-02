@@ -1,0 +1,83 @@
+.admin-dashboard {
+  padding: 1rem 1rem;
+  @media screen and (min-width: 64em) {
+    padding: 2rem 2rem;
+  }
+  .container {
+    background-color: var(--White);
+    border-radius: 2vw;
+    h2 {
+      font-size: var(--fs-800);
+      text-align: center;
+    }
+  }
+  .blood-stock {
+    max-width: 900px;
+    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+    // grid-template-columns: repeat(2, 1fr);
+    @media screen and (min-width: 45em) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    padding-top: 2rem;
+    --gap: 1.5rem;
+    .blood-group-card {
+      max-width: 200px;
+      background-color: var(--Very-light-Blue);
+      border-radius: 20px;
+      padding: 1.25rem 1.5rem;
+      align-items: center;
+      .icon {
+        position: relative;
+        &::after {
+          content: attr(data-blood-type);
+          position: absolute;
+          top: -15px;
+          right: -25px;
+          padding: 5px 10px;
+          font-size: 14px;
+          color: #000;
+          font-weight: 700;
+        }
+        svg path {
+          fill: var(--Red);
+        }
+      }
+      .units {
+        font-weight: 700;
+        font-size: 1rem;
+      }
+    }
+  }
+  .Info {
+    grid-template-columns: 1fr;
+    padding: 2rem 0;
+    --gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    @media screen and (min-width: 45em) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    &_card {
+      background-color: var(--Very-light-Blue);
+      border-radius: 20px;
+      padding: 1.25rem 1.5rem;
+      align-items: center;
+      h4 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        text-align: center;
+      }
+      .box {
+        --gap: 1rem;
+        svg path {
+          fill: var(--Red);
+        }
+        p {
+          font-size: 1.25rem;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}

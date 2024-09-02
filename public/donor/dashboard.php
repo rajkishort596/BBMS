@@ -34,7 +34,7 @@ if (!isset($_SESSION['user'])) {
         $currentPage = 'Dashboard';  // set the current page for active link
         include('../includes/sidebar.php');
         ?>
-        <main class="dashboard-main ">
+        <main class="donor-dashboard dashboard">
             <div class="container grid">
                 <div class="welcome__card card flex-column">
                     <div class="flex-s-b">

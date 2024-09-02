@@ -89,7 +89,6 @@ body {
   font-family: sans-serif;
   color: var(--Black);
   min-height: 100vh;
-  overflow-x: hidden;
   position: relative;
   scroll-behavior: smooth;
 }
@@ -376,6 +375,11 @@ li {
 .Hollow-btn:hover {
   background-color: var(--Red);
   color: var(--White);
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
 }
 
 /* typography */
