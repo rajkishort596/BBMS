@@ -23,6 +23,7 @@ Links.forEach((link) => {
   link.addEventListener("click", () => {
     Navbar.classList.remove("active");
     Overlay.classList.remove("active");
+    Body.classList.remove("no-scroll");
   });
 });
 /*-------------------Dashboard menu js-------------------*/

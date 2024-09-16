@@ -63,7 +63,7 @@ if (!isset($_SESSION['user'])) {
                 <div class="donation_chart card">
                     <canvas id="donationsChart"></canvas>
                 </div>
-                <script src="chart.js"></script>
+                <!-- <script src="chart.js"></script> -->
             </div>
         </main>
     </div>

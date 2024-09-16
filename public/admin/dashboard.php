@@ -1,5 +1,6 @@
 <?php
 include('../../config/init.php');
+include('../../controllers/ShowBlood.php');
 
 // Check if the user is logged in
 
@@ -34,9 +35,24 @@ if (!isset($_SESSION['user'])) {
         ?>
         <main class="admin-dashboard dashboard">
             <div class="container">
-                <h2><span class="red">Blood</span> Inventary Summary</h2>
+                <h2 class="ff-Merriweather"><span class="red">Blood</span> Inventary Summary</h2>
                 <div class="blood-stock grid">
-                    <div class="blood-group-card blood-type flex-column" data-units="130">
+                    <?php
+                    // Loop through the fetched blood stock data and render it
+                    foreach ($bloodStock as $stock) {
+                    ?>
+                        <div class="blood-group-card blood-type flex-column" data-units="<?= $stock['total_units']; ?>">
+                            <div class="icon" data-blood-type="<?= $stock['blood_group']; ?>">
+                                <svg width="32" height="45" viewBox="0 0 32 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.0062 1.13383L17.0061 1.13384L17.0088 1.1376C19.0252 3.94634 22.5539 9.04224 25.5753 14.3023C27.0862 16.9327 28.4649 19.5948 29.4641 22.0265C30.4681 24.4703 31.0679 26.6323 31.066 28.2784V28.279C31.066 36.7177 24.229 43.558 15.779 43.558C7.34406 43.558 0.5 36.7178 0.5 28.279C0.5 26.6327 1.10127 24.4705 2.10643 22.0267C3.10663 19.5949 4.48597 16.9327 5.99717 14.3023C9.01915 9.04222 12.5468 3.94627 14.5613 1.13741L14.5613 1.13743L14.5648 1.13248C14.8435 0.73382 15.2962 0.5 15.791 0.5C16.2707 0.5 16.7279 0.73852 17.0062 1.13383ZM6.67767 35.1863L6.68107 35.1891C7.0358 35.4829 7.46457 35.626 7.891 35.626C8.41681 35.626 8.95656 35.4115 9.33095 34.9563C9.99943 34.1664 9.89157 32.983 9.10489 32.3141L9.10264 32.3122C7.97053 31.361 7.59165 30.1634 7.50201 29.1618C7.41348 28.1727 7.61087 27.4009 7.63255 27.318C7.90913 26.3286 7.33706 25.2968 6.34253 25.0078L6.33889 25.0068C5.34396 24.7258 4.30813 25.2953 4.02133 26.2938C3.97091 26.4616 3.61251 27.7863 3.76213 29.5049C3.91435 31.2532 4.5961 33.431 6.67767 35.1863Z" fill="white" stroke="#FF0000" />
+                                </svg>
+                            </div>
+                            <p class="units"><?= $stock['total_units']; ?> Units</p>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                    <!-- <div class="blood-group-card blood-type flex-column" data-units="130">
                         <div class="icon" data-blood-type="A+">
                             <svg width="32" height="45" viewBox="0 0 32 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M17.0062 1.13383L17.0061 1.13384L17.0088 1.1376C19.0252 3.94634 22.5539 9.04224 25.5753 14.3023C27.0862 16.9327 28.4649 19.5948 29.4641 22.0265C30.4681 24.4703 31.0679 26.6323 31.066 28.2784V28.279C31.066 36.7177 24.229 43.558 15.779 43.558C7.34406 43.558 0.5 36.7178 0.5 28.279C0.5 26.6327 1.10127 24.4705 2.10643 22.0267C3.10663 19.5949 4.48597 16.9327 5.99717 14.3023C9.01915 9.04222 12.5468 3.94627 14.5613 1.13741L14.5613 1.13743L14.5648 1.13248C14.8435 0.73382 15.2962 0.5 15.791 0.5C16.2707 0.5 16.7279 0.73852 17.0062 1.13383ZM6.67767 35.1863L6.68107 35.1891C7.0358 35.4829 7.46457 35.626 7.891 35.626C8.41681 35.626 8.95656 35.4115 9.33095 34.9563C9.99943 34.1664 9.89157 32.983 9.10489 32.3141L9.10264 32.3122C7.97053 31.361 7.59165 30.1634 7.50201 29.1618C7.41348 28.1727 7.61087 27.4009 7.63255 27.318C7.90913 26.3286 7.33706 25.2968 6.34253 25.0078L6.33889 25.0068C5.34396 24.7258 4.30813 25.2953 4.02133 26.2938C3.97091 26.4616 3.61251 27.7863 3.76213 29.5049C3.91435 31.2532 4.5961 33.431 6.67767 35.1863Z" fill="white" stroke="#FF0000" />
@@ -99,11 +115,11 @@ if (!isset($_SESSION['user'])) {
                             </svg>
                         </div>
                         <p class="units">60 Units</p>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="Info grid">
                     <div class="Info_card flex-column">
-                        <h4>Pending<br> <span class="red">Blood</span> Requests</h4>
+                        <h4 class="ff-Poppins">Pending<br> <span class="red">Blood</span> Requests</h4>
                         <div class="box flex">
                             <svg width="37" height="35" viewBox="0 0 37 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M26.6405 0.21843C24.9391 0.244884 23.2747 0.719666 21.8156 1.59483C20.3564 2.46999 19.1541 3.71454 18.3301 5.2028C17.5061 3.71454 16.3038 2.46999 14.8446 1.59483C13.3854 0.719666 11.7211 0.244884 10.0197 0.21843C7.30735 0.336228 4.75191 1.5223 2.91164 3.51753C1.07137 5.51276 0.0958625 8.15495 0.198233 10.8669C0.198233 21.0999 16.7526 32.9189 17.4567 33.4204L18.3301 34.0382L19.2034 33.4204C19.9076 32.922 36.462 21.0999 36.462 10.8669C36.5643 8.15495 35.5888 5.51276 33.7486 3.51753C31.9083 1.5223 29.3529 0.336228 26.6405 0.21843Z" fill="#FF0000" />
@@ -112,7 +128,7 @@ if (!isset($_SESSION['user'])) {
                         </div>
                     </div>
                     <div class="Info_card flex-column">
-                        <h4>Upcoming<br> Donation Campaign</h4>
+                        <h4 class="ff-Poppins">Upcoming<br> Donation Campaign</h4>
                         <div class="box flex">
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0_9_374)">

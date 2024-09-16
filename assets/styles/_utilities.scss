@@ -61,12 +61,35 @@
 }
 .Sucess {
   color: var(--Green);
-  font-weight: 700;
+  font-weight: 600;
 }
 .failure {
   color: var(--Red);
-  font-weight: 700;
+  font-weight: 600;
 }
+.Empty {
+  color: var(--Orange);
+  font-weight: 600;
+}
+/* Style for the condition column */
+.condition {
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+/* Green for good condition */
+.condition.good {
+  color: var(--White);
+  background-color: #4caf50;
+}
+
+/* Red for expired condition */
+.condition.expired {
+  color: var(--White);
+  background-color: #f44336;
+}
+
 .w-100 {
   width: 100%;
 }
@@ -89,9 +112,52 @@
     color: var(--White);
   }
 }
+.Red-btn {
+  color: var(--White);
+  background-color: var(--Red);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  outline: none;
+  border: none;
+  max-width: 250px;
+  cursor: pointer;
+}
+.Yellow-btn {
+  color: var(--White);
+  background-color: var(--Yellow);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  outline: none;
+  border: none;
+  max-width: 250px;
+  cursor: pointer;
+}
+.Green-btn {
+  color: var(--White);
+  background-color: var(--Green);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  outline: none;
+  border: none;
+  max-width: 250px;
+  cursor: pointer;
+}
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.text-center {
+  text-align: center;
+}
 .no-scroll {
   overflow: hidden;
-  height: 100%;
+  height: 100vh;
 }
 /* typography */
 

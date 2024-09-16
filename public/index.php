@@ -154,9 +154,6 @@ include('../config/init.php');
             <p>Pupri</p>
           </div>
         </div>
-
-
-        <!-- Add more donors as needed -->
       </div>
     </div>
 

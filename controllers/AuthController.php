@@ -13,10 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Check if the user is registering as a Donor
         if (isset($_POST['donor'])) {
             $name = $_POST['name'];
-            $sql = "INSERT INTO donor (name, email, password) VALUES ('$name', '$email', '$password_hashed')";
+            $sql = "INSERT INTO donors (name, email, password) VALUES ('$name', '$email', '$password_hashed')";
         } else {
             $name = $_POST['name'];
-            $sql = "INSERT INTO recipient (name, email, password) VALUES ('$name', '$email', '$password_hashed')";
+            $sql = "INSERT INTO recipients (name, email, password) VALUES ('$name', '$email', '$password_hashed')";
         }
 
         if (mysqli_query($conn, $sql)) {
@@ -33,11 +33,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $user_type =  $_POST['user-type']; // Retrieve the selected user type
         if ($user_type == 'donor') {
-            $sql = "SELECT * FROM donor WHERE email = '$email'";
+            $sql = "SELECT * FROM donors WHERE email = '$email'";
         } elseif ($user_type == 'admin') {
-            $sql = "SELECT * FROM admin WHERE email = '$email'";
+            $sql = "SELECT * FROM admins WHERE email = '$email'";
         } else {
-            $sql = "SELECT * FROM recipient WHERE email = '$email'";
+            $sql = "SELECT * FROM recipients WHERE email = '$email'";
         }
 
         $result = mysqli_query($conn, $sql);

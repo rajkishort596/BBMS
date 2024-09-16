@@ -47,7 +47,7 @@ body {
   font-family: sans-serif;
   color: var(--Black);
   min-height: 100vh;
-  // overflow-x: hidden;
+  overflow-x: hidden;
   position: relative;
   scroll-behavior: smooth;
 }
@@ -172,4 +172,56 @@ select {
 }
 li {
   list-style: none;
+}
+/*---------------Common Table Styles---------------*/
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+thead th {
+  background-color: var(--Red-Header);
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+thead th:not(:last-child) {
+  border-right: 2px solid white;
+}
+tbody {
+  tr:nth-of-type(even) {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  td {
+    padding: 10px;
+    border: 1px solid var(--Black);
+    input {
+      padding: 0.5rem;
+      border-radius: 8px;
+      width: 75%;
+    }
+  }
+}
+/*-------------common Input Fields styles-------------*/
+.input-group {
+  --gap: 0.5rem;
+  flex: 1;
+  position: relative;
+  input,
+  select,
+  textarea {
+    padding: 1rem 1.25rem;
+    border-radius: 5px;
+    box-shadow: 0px 2px 3px #8f95a3;
+    outline: none;
+    border: 1px solid #8f95a3;
+  }
+  textarea:read-only,
+  input:read-only {
+    background-color: var(--Very-light-Blue);
+    color: var(--Black);
+    font-weight: 500;
+  }
 }

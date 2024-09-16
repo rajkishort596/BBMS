@@ -1,0 +1,132 @@
+.manage-invenatary-container {
+  .section-tab {
+    margin-block: 1rem;
+    padding: 1rem;
+    --gap: 1rem;
+    max-width: 900px;
+    margin: 2rem auto;
+    background-color: var(--Very-light-Blue);
+    @media screen and (min-width: 48rem) {
+      flex-direction: row;
+      justify-content: space-between;
+      background-color: transparent;
+      --gap: 0.5rem;
+      padding: 0;
+      border-bottom: 1.5px solid var(--Dark-Gray);
+    }
+    .tab-link {
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      opacity: 0.7;
+      &::before {
+        @media screen and (min-width: 48rem) {
+          content: "";
+          position: absolute;
+          bottom: -1.5px;
+          left: 0;
+          height: 3px;
+          width: 0%;
+          border-radius: 100px;
+          background-color: var(--Red);
+          transition: all 0.5s;
+        }
+      }
+      @media screen and (min-width: 48rem) {
+        padding: 0.5rem 0rem;
+      }
+      svg {
+        transform: scale(0.7);
+      }
+      &:hover {
+        opacity: 1;
+      }
+    }
+    .tab-link.active {
+      background-color: var(--Soft-Red);
+      position: relative;
+      opacity: 1;
+      &::before {
+        @media screen and (min-width: 48rem) {
+          width: 100%;
+        }
+      }
+      @media screen and (min-width: 48rem) {
+        background-color: transparent;
+      }
+      svg path {
+        fill: var(--White);
+        @media screen and (min-width: 48rem) {
+          fill: var(--Red);
+        }
+      }
+      p {
+        color: var(--White);
+        @media screen and (min-width: 48rem) {
+          color: var(--Red);
+        }
+      }
+    }
+  }
+  .tab-content {
+    --gap: 2rem;
+    align-items: center;
+    display: none;
+    h3 {
+      font-size: 1.5rem;
+    }
+    .form {
+      align-items: center;
+      --gap: 2rem;
+      &__container {
+        grid-template-columns: 1fr;
+        --gap: 1.5rem;
+        @media screen and (min-width: 48rem) {
+          grid-template-columns: 1fr 1fr;
+        }
+        .input-group {
+          select {
+            appearance: none;
+          }
+          img {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 25px;
+            aspect-ratio: 1;
+            transform: translate(-20px, -50%);
+          }
+        }
+        @media screen and (min-width: 48rem) {
+          --gap: 2rem;
+        }
+      }
+    }
+    /*--------update-inventary styles-------------*/
+    .update-inventary-container {
+      align-items: center;
+      justify-content: center;
+
+      .update-btn {
+        background-color: var(--Red);
+      }
+      #btn {
+        padding: 0.5rem 1rem;
+        border-radius: 10px;
+        margin: 0 auto;
+      }
+    }
+  }
+  /*-------------------Delete expired Styles-------------------*/
+  .btn-container {
+    justify-content: center;
+    --gap: 5rem;
+    .disabled {
+      pointer-events: none;
+      opacity: 0.7;
+    }
+  }
+  .tab-content.active {
+    display: flex;
+  }
+}
