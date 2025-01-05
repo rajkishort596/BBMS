@@ -3,7 +3,7 @@ include('../../config/init.php');
 
 // Check if the user is logged in
 
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user']) || $_SESSION['usertype'] != 'admin') {
     $_SESSION['no-log-in'] = "Please Login to acess your dashboard.";
     header('Location: ../register.php?login=true'); // Redirect to index or login page
     exit();
@@ -93,6 +93,7 @@ if (!isset($_SESSION['user'])) {
     <script src="../../assets/js/Tabs.js"></script>
     <script src="../../assets/js/jQuery.js"></script>
     <script src="../../assets/js/ajax/addBlood.js"></script>
+    <script src="../../assets/js/ajax/fetchInventary.js"></script>
     <script src="../../assets/js/ajax/updateInventary.js"></script>
     <script src="../../assets/js/ajax/deleteExpired.js"></script>
 </body>

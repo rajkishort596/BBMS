@@ -6,14 +6,17 @@
         <path fill-rule="evenodd" clip-rule="evenodd" d="M60.0371 3.15497C59.6661 2.62797 59.0571 2.30896 58.4131 2.30896C57.7581 2.30896 57.1511 2.61997 56.7771 3.15497C52.7401 8.78397 42.6221 23.601 42.6221 30.588C42.6221 39.303 49.6901 46.3669 58.4011 46.3669C67.1271 46.3669 74.1881 39.303 74.1881 30.588C74.1961 23.601 64.0781 8.78397 60.0371 3.15497ZM51.5691 36.9449C51.2991 37.2749 50.9061 37.4349 50.5131 37.4349C50.1991 37.4349 49.8841 37.33 49.6221 37.113C45.7121 33.816 47.0591 28.953 47.1231 28.744C47.3321 28.01 48.0921 27.5899 48.8251 27.7969C49.5581 28.0099 49.9771 28.77 49.7721 29.496C49.7301 29.656 48.8811 32.885 51.4031 35.004C51.9841 35.498 52.0591 36.3689 51.5691 36.9449Z" fill="#FF0000" />
     </svg>
 </div>
+<?php
+include("../../controllers/ShowProfile.php");
+?>
 <header class="dashboard-header flex">
     <div class="container">
         <div class="flex-s-b-center">
             <div class="profile flex">
-                <img src="../../assets/images/Avatar.jpg" class="pic">
+                <img src="../../assets/images/Profile-Pics/<?php echo $ProfilePic ?>" class="pic">
                 <div class="info">
-                    <p class="name"><?php echo $_SESSION['user'] ?></p>
-                    <p class="email"><?php echo $_SESSION['email'] ?></p>
+                    <p class="name"><?php echo $name ?></p>
+                    <p class="email"><?php echo $email ?></p>
                 </div>
             </div>
             <div class="logout">

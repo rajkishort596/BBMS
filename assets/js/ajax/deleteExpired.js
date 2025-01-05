@@ -116,9 +116,8 @@ $(document).ready(function () {
           if (response == 1) {
             showExpiredBlood();
             showModal("Expired blood units deleted successfully!", "Sucess");
-            // alert("Expired blood units deleted successfully!");
+            InventaryManager.showBloodData();
           } else {
-            // alert("Failed to delete blood units.");
             showModal("Failed to delete blood units", "failure");
           }
         },

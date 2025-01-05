@@ -1,0 +1,21 @@
+.Manage-request-container {
+  --gap: 2rem;
+  .filter-section {
+    align-items: center;
+    @media screen and (min-width: 48em) {
+      align-items: flex-end;
+      flex-direction: row;
+    }
+    .filter-Icon {
+      padding: 1rem;
+      img {
+        width: 50px;
+        cursor: pointer;
+      }
+      justify-content: center;
+    }
+  }
+  .btn-container {
+    justify-content: center;
+  }
+}

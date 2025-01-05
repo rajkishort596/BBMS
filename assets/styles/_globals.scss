@@ -93,7 +93,7 @@ select {
   :root {
     /* font-sizes */
     --fs-900: 4rem; //64px
-    --fs-800: 2.5rem;
+    --fs-800: 2.25rem;
     // --fs-700: 2.25rem; //36px
     // --fs-600: 2rem; //32px
     --fs-500: 1.25rem; //30px
@@ -104,7 +104,7 @@ select {
   :root {
     /* font-sizes */
     --fs-900: clamp(5rem, 5vw + 1rem, 6rem); //80px to 96px
-    --fs-800: 3rem;
+    --fs-800: 2.5rem;
     // --fs-700: 2.25rem; //36px
     // --fs-600: 2rem; //32px
     --fs-500: 1.56rem; //30px
@@ -183,7 +183,7 @@ thead th {
   background-color: var(--Red-Header);
   color: white;
   padding: 10px;
-  font-size: 16px;
+  font-size: 0.75rem;
   border-radius: 5px;
 }
 
@@ -212,6 +212,7 @@ tbody {
   input,
   select,
   textarea {
+    width: 100%;
     padding: 1rem 1.25rem;
     border-radius: 5px;
     box-shadow: 0px 2px 3px #8f95a3;
@@ -219,9 +220,43 @@ tbody {
     border: 1px solid #8f95a3;
   }
   textarea:read-only,
+  select:disabled,
   input:read-only {
     background-color: var(--Very-light-Blue);
     color: var(--Black);
     font-weight: 500;
   }
+  select {
+    appearance: none;
+  }
+}
+
+.carousel-indicators {
+  justify-content: center;
+  position: absolute;
+  bottom: 0px;
+  --gap: 0.5rem;
+}
+.carousel-indicators .dot {
+  height: 12px;
+  width: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px;
+  cursor: pointer;
+}
+.carousel-indicators .dot.active {
+  background-color: #f14d4d;
+}
+
+.alert {
+  // position: absolute;
+  // top: 5px;
+  // left: 17rem;
+  // width: 100%;
+  // transform: translateX(-50%);
+}
+.msg {
+  grid-column: 1/3;
 }

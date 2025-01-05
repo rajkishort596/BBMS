@@ -27,6 +27,10 @@
       justify-content: center;
       .img-box {
         position: relative;
+        img {
+          width: 50px;
+          border-radius: 50%;
+        }
         &::after {
           position: absolute;
           content: "";
@@ -41,7 +45,7 @@
         }
         &::before {
           position: absolute;
-          content: "A+";
+          content: attr(data-blood-type);
           top: -25px;
           right: -28px;
           padding: 5px 10px;

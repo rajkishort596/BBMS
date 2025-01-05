@@ -21,12 +21,17 @@ $(document).ready(function () {
         if (response == 1) {
           msg = "<div class='Sucess'>Blood added successfully</div>";
           $("#AddBloodForm")[0].reset(); // Reset form only on success
+          InventaryManager.showBloodData();
         } else if (response == 0) {
           msg = "<div class='failure'>Blood addition failed</div>";
         } else {
           msg = "<div class='Empty'>Please fill in all required fields</div>";
         }
         $(".msg").html(msg); // Show the message in .msg element
+        // Remove the message after 3 seconds
+        setTimeout(function () {
+          $(".msg").html("");
+        }, 3000);
       },
       error: function (xhr, status, error) {
         // Handle network or server errors

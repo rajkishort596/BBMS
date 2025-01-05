@@ -1,57 +1,54 @@
 $(document).ready(function () {
-  // Event listener for edit icons (assumes edit-icon class on each icon)
-  $(".edit-icon").on("click", function () {
-    // Limit scope to the specific form/section
-    const formSection = $(this).closest(".form"); // Replace .form-section with the actual class of the form/section
-    // Find the input field that is a sibling of the clicked icon
-    const inputField = $(this).siblings("input, textarea");
-    const selectFields = $(this).siblings("select");
+  $("#save-profile-btn").on("click", function (event) {
+    event.preventDefault(); // Prevent the form from submitting traditionally
 
-    // Enable the input field for editing
-    inputField.removeAttr("readonly").focus();
+    // Collect form data
+    let ProfileData = {
+      section: "profile", // Unique identifier for the profile section
+      // ProfilePic: $("#fileInput"),
+      UserName: $("#name").val(),
+      FatherName: $("#father-name").val(),
+      Gender: $("#gender").val(),
+      BloodGroup: $("#blood-group").val(),
+      DOB: $("#dob").val(),
+      Weight: $("#weight").val(),
+    };
+    console.log(ProfileData);
+    // Send the form data via AJAX
+    $.ajax({
+      url: "../../controllers/UpdateProfile.php", // The form's action URL
+      type: "POST", // Method type
+      data: JSON.stringify(ProfileData), // Form data sent as JSON
+      contentType: "application/json", // Specify the content type as JSON
+      success: function (response) {
+        console.log(response);
+        let msg;
+        if (response == 1) {
+          msg = "<div class='Sucess'>Profile updated successfully</div>";
+        } else if (response == 0) {
+          msg = "<div class='failure'>Profile Updation failed</div>";
+        } else {
+          msg = "<div class='Empty'>Please fill in all required fields</div>";
+        }
+        $(".msg").html(msg); // Show the message in .msg element
+        // Remove the message after 3 seconds
+        setTimeout(function () {
+          $(".msg").html("");
+        }, 3000);
+      },
+      error: function (xhr, status, error) {
+        // Handle network or server errors
+        console.error("AJAX error:", status, error);
+        let msg =
+          "<div class='failure'>An error occurred. Please try again.</div>";
+        $(".msg").html(msg);
+        // Remove the message after 3 seconds
+        setTimeout(function () {
+          $(".msg").html(""); // Clear the message
+        }, 3000);
+      },
+    });
 
-    // Enable the select field
-    selectFields.prop("disabled", false);
-
-    // Select Save and Cancel buttons within the same section
-    const CancelBtn = formSection.find(".cancel-btn");
-    const SaveBtn = formSection.find(".save-btn");
-
-    const OTPField = formSection.find("#otp");
-    const SendOTPBtn = formSection.find(".send-otp-btn");
-
-    // Enable the Save, Cancel buttons, OTP field, and Send OTP button
-    SaveBtn.removeClass("disabled");
-    CancelBtn.removeClass("disabled");
-    OTPField.prop("readonly", false);
-    SendOTPBtn.removeClass("disabled");
-  });
-
-  // Make all fields readonly when clicked on cancel button within the form section
-  $(".cancel-btn").on("click", function () {
-    // Limit scope to specific form/section
-    const formSection = $(this).closest(".form");
-
-    // Select input fields in the current section
-    const AllInputFields = formSection.find("input, textarea");
-    const AllSelectFields = formSection.find("select");
-
-    const OTPField = formSection.find("#otp");
-    const SendOTPBtn = formSection.find(".send-otp-btn");
-
-    // Set fields back to readonly
-    AllInputFields.prop("readonly", true);
-
-    // Disable the select field
-    AllSelectFields.prop("disabled", true);
-
-    // Deactivate OTP field and button
-    OTPField.prop("readonly", true);
-    SendOTPBtn.addClass("disabled");
-
-    // Disable the Save and Cancel buttons again
-    const SaveBtn = formSection.find(".save-btn");
-    $(this).addClass("disabled");
-    SaveBtn.addClass("disabled");
+    ProfileManager.disableForm(this); // Pass the element you want to target
   });
 });

@@ -15,7 +15,7 @@
                             </clipPath>
                         </defs>
                     </svg>
-                    <p>25</p>
+                    <p><?php echo $total_campaigns ?></p>
                 </div>
             </div>
             <div class="Info_card flex-column">
@@ -31,7 +31,7 @@
                             </clipPath>
                         </defs>
                     </svg>
-                    <p>5</p>
+                    <p><?php echo $active_count ?></p>
                 </div>
             </div>
             <div class="Info_card flex-column">
@@ -47,7 +47,7 @@
                             </clipPath>
                         </defs>
                     </svg>
-                    <p>3</p>
+                    <p><?php echo $upcoming_count ?></p>
                 </div>
             </div>
             <div class="Info_card flex-column">
@@ -63,7 +63,7 @@
                             </clipPath>
                         </defs>
                     </svg>
-                    <p>17</p>
+                    <p><?php echo $completed_count ?></p>
                 </div>
             </div>
         </div>

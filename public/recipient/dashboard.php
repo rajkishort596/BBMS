@@ -3,7 +3,7 @@ include('../../config/init.php');
 
 // Check if the user is logged in
 
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user']) || $_SESSION['usertype'] != 'recipient') {
     $_SESSION['no-log-in'] = "Please Login to acess your dashboard.";
     header('Location: ../register.php?login=true'); // Redirect to index or login page
     exit();
@@ -15,7 +15,7 @@ if (!isset($_SESSION['user'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donor Dashboard</title>
+    <title>Recipient Dashboard</title>
     <!--------------- goggle fonts link --------------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,34 +31,69 @@ if (!isset($_SESSION['user'])) {
         $userType = 'recipient';  // or 'admin', 'recipient'
         $currentPage = 'Dashboard';  // set the current page for active link
         include('../includes/sidebar.php');
+        include('../../controllers/LastActivity.php');
         ?>
-        <main class="dashboard-main grid">
-            <div class="container">
-                <h1>recipient Dashboard</h1>
-                <!-- <div class="welcome__card card flex-column">
+        <main class="recipient-dashboard dashboard">
+            <div class="container grid">
+                <div class="welcome__card card flex-column">
                     <div class="flex-s-b">
                         <div class="flex-column">
                             <p class="welcome ff-Poppins">Welcome back</p>
-                            <h3 class="username ff-poppins">Rajkishor Thakur</h3>
+                            <h3 class="username ff-poppins"><?php echo $name ?></h3>
                         </div>
-                        <div class="blood-group" data-blood-type="<?php echo "A+"; ?>">
+                        <div class="blood-group" data-blood-type="<?php echo $bloodGroup ?>">
                             <img src=" ../../assets/images/Red-drop.svg">
                         </div>
                     </div>
                     <div class="flex-s-b">
                         <div class="flex-column ff-poppins">
-                            <p class="last-donated ">Last Donated on 06/07/24</p>
+                            <p class="last-donated ">Last Requested on: <span class="bold"> <?php echo $Request_Date ?></span></p>
                             <div class="location flex">
                                 <img src="../../assets/images/Location.svg">
-                                <p>RB Memorial, DBG</p>
+                                <p class="bold"><?php echo $Request_Location ?></p>
                             </div>
                         </div>
                         <div class="flex quantity">
                             <img src="../../assets/images/Heart-Icon.svg">
-                            <p>250ml</p>
+                            <p> <span class="red bold"><?php echo $Blood_Units ?></span> Units</p>
                         </div>
                     </div>
-                </div> -->
+                </div>
+                <div class="profile-status card flex-column">
+                    <div class="profile-info flex-column">
+                        <h3 class="profile-heading">
+                            <?php if ($profile_complete): ?>
+                                Your Profile is Complete!
+                            <?php else: ?>
+                                Your Profile is Incomplete!
+                            <?php endif; ?>
+                        </h3>
+                        <p class="profile-subtext text-center">
+                            <?php if ($profile_complete): ?>
+                                You can update your profile anytime.
+                            <?php else: ?>
+                                Complete your profile to access all features.
+                            <?php endif; ?>
+                        </p>
+                    </div>
+                    <a class="btn profile-btn Red-btn" href="./Manage-profile.php">
+                        <?php if ($profile_complete): ?>
+                            Edit Profile
+                        <?php else: ?>
+                            Complete Profile
+                        <?php endif; ?>
+                    </a>
+                </div>
+                <div class="health-tips card w-100 flex-column">
+                    <h2 class="text-center ff-Merriweather">Health Tips for Blood Recipients</h2>
+                    <ul class="tips-list flex-column">
+                        <li><span class="bold">Stay Hydrated:</span> Drink plenty of water before and after receiving blood.</li>
+                        <li><span class="bold">Maintain a Balanced Diet:</span> Consume iron-rich foods to help with recovery.</li>
+                        <li><span class="bold">Rest Adequately:</span> Make sure to get enough rest after your blood transfusion.</li>
+                        <li><span class="bold">Follow Medical Advice:</span> Always adhere to the instructions given by your healthcare provider.</li>
+                        <li><span class="bold">Report Any Side Effects:</span> Inform your doctor if you experience any unusual symptoms.</li>
+                    </ul>
+                </div>
             </div>
         </main>
     </div>

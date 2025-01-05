@@ -57,11 +57,11 @@ include('../config/init.php');
                 <input type="hidden" name="form_type" value="<?php echo $text; ?>">
                 <?php
                 if ($text == "Registration") {
-                    echo ' <input type="text" placeholder="Name" name="name" required>';
+                    echo ' <input type="text" placeholder="Name" name="name" id="name" required>';
                 }
                 ?>
-                <input type="email" placeholder="Email" name="email" value="rajkishort596@gmail.com" required>
-                <input type="password" placeholder="Password" name="password" value="pizza123" required>
+                <input type="email" placeholder="Email" name="email" id="email" required>
+                <input type="password" placeholder="Password" name="password" id="password" required>
                 <?php
                 if ($text == "Registration") {
                     echo ' <div class="checkbox-container flex">
@@ -86,6 +86,8 @@ include('../config/init.php');
             </form>
         </div>
     </div>
+    <script src="../assets/js/jQuery.js"></script>
+    <script src="../assets/js/ajax/fieldValidations.js"></script>
 </body>
 
 </html>

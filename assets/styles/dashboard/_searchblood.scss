@@ -1,0 +1,95 @@
+.recipient-dashboard {
+  .search-blood {
+    background-color: var(--White);
+    border-radius: 2vw;
+    min-height: 100%;
+    .heading {
+      --gap: 0.5rem;
+      h2 {
+        font-weight: 600;
+      }
+      p {
+        color: var(--Dark-Gray);
+        font-size: 0.875rem;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+    }
+    .form {
+      align-items: center;
+      @media screen and (min-width: 48em) {
+        flex-direction: row;
+      }
+      .input-group {
+        position: relative;
+      }
+      img {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        width: 30px;
+        aspect-ratio: 1;
+        transform: translate(-20px, -50%);
+      }
+      button {
+        border-radius: 5px;
+        padding: 1rem 2.25rem;
+        border: 1px solid var(--Red);
+        font-weight: 700;
+        font-size: 1.25rem;
+        letter-spacing: 3.5px;
+        background: none;
+        border-radius: 13px;
+        transition: all 0.5s;
+        cursor: pointer;
+        color: var(--Red);
+        &:hover {
+          color: var(--White);
+          background: var(--Red);
+        }
+      }
+    }
+    .donor-list {
+      max-width: 62.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+      --gap: 2rem;
+      .donor-card {
+        --gap: 0.875rem;
+        align-items: center;
+        justify-content: center;
+        .img-box {
+          position: relative;
+          img {
+            width: 50px;
+            border-radius: 50%;
+          }
+          &::after {
+            position: absolute;
+            content: "";
+            background: url("../../images/Red-drop.svg");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            top: -10px;
+            right: -5px;
+            width: 20px;
+            height: 25px;
+          }
+          &::before {
+            position: absolute;
+            content: attr(data-blood-type);
+            top: -25px;
+            right: -28px;
+            padding: 5px 10px;
+            font-size: 14px;
+            color: #000;
+            font-weight: 700;
+          }
+        }
+        .location {
+          --gap: 0.5rem;
+        }
+      }
+    }
+  }
+}

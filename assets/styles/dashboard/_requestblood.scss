@@ -1,0 +1,64 @@
+.recipient-dashboard {
+  .request-blood {
+    .Request-Blood-section {
+      height: 100%;
+      h2 {
+        font-size: var(--fs-800);
+      }
+      .form {
+        align-items: center;
+        --gap: 2.5rem;
+        &__container {
+          --gap: 1rem;
+          width: 100%;
+          max-width: 900px;
+          grid-template-columns: 1fr;
+          @media screen and (min-width: 48em) {
+            --gap: 1.5rem;
+            grid-template-columns: 1fr 1fr;
+          }
+          .input-group {
+            input,
+            select {
+              padding: 0.5rem 1rem;
+            }
+            select {
+              appearance: none;
+              &:disabled {
+                background-color: var(--Very-light-Blue);
+                opacity: 1;
+                color: var(--Black);
+              }
+            }
+          }
+        }
+        .confirm-checkbox {
+          --gap: 1rem;
+          input {
+            cursor: pointer;
+            margin: 5px;
+            transform: scale(2);
+          }
+          label {
+            cursor: pointer;
+            color: var(--Red);
+          }
+        }
+        .request-btn {
+          max-width: unset;
+          letter-spacing: 1.5px;
+          padding: 0.75rem 1.25rem;
+          @media screen and (min-width: 48em) {
+          }
+        }
+      }
+    }
+    .confirmation-section {
+      min-height: 75vh;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      --gap: 1.5rem;
+    }
+  }
+}

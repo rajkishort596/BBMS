@@ -74,86 +74,7 @@ include('../config/init.php');
       <p class="ff-Raleway description">Honoring the Lifesaving Contributions of Our Dedicated Donors.
         Their Generosity and Selflessness Help Save Lives Every Day.</p>
       <div class="volunteer-list grid w-100">
-        <div class="volunteer-card card flex-column">
-          <div class="img-box" data-blood-type="<?php echo "A+"; ?>">
-            <img src="../assets/images/Avatar.jpg" alt="volunteer 1">
-          </div>
-          <p>Rajkishor Thakur</p>
-          <div class="location flex">
-            <img src="../assets//images/Location.svg">
-            <p>Pupri</p>
-          </div>
-        </div>
-        <div class="volunteer-card card flex-column">
-          <div class="img-box" data-blood-type="<?php echo "A+"; ?>">
-            <img src="../assets/images/Avatar.jpg" alt="volunteer 1">
-          </div>
-          <p>Rajkishor Thakur</p>
-          <div class="location flex">
-            <img src="../assets//images/Location.svg">
-            <p>Pupri</p>
-          </div>
-        </div>
-        <div class="volunteer-card card flex-column">
-          <div class="img-box" data-blood-type="<?php echo "A+"; ?>">
-            <img src="../assets/images/Avatar.jpg" alt="volunteer 1">
-          </div>
-          <p>Rajkishor Thakur</p>
-          <div class="location flex">
-            <img src="../assets//images/Location.svg">
-            <p>Pupri</p>
-          </div>
-        </div>
-        <div class="volunteer-card card flex-column">
-          <div class="img-box" data-blood-type="<?php echo "A+"; ?>">
-            <img src="../assets/images/Avatar.jpg" alt="volunteer 1">
-          </div>
-          <p>Rajkishor Thakur</p>
-          <div class="location flex">
-            <img src="../assets//images/Location.svg">
-            <p>Pupri</p>
-          </div>
-        </div>
-        <div class="volunteer-card card flex-column">
-          <div class="img-box" data-blood-type="<?php echo "A+"; ?>">
-            <img src="../assets/images/Avatar.jpg" alt="volunteer 1">
-          </div>
-          <p>Rajkishor Thakur</p>
-          <div class="location flex">
-            <img src="../assets//images/Location.svg">
-            <p>Pupri</p>
-          </div>
-        </div>
-        <div class="volunteer-card card flex-column">
-          <div class="img-box" data-blood-type="<?php echo "A+"; ?>">
-            <img src="../assets/images/Avatar.jpg" alt="volunteer 1">
-          </div>
-          <p>Rajkishor Thakur</p>
-          <div class="location flex">
-            <img src="../assets//images/Location.svg">
-            <p>Pupri</p>
-          </div>
-        </div>
-        <div class="volunteer-card card flex-column">
-          <div class="img-box" data-blood-type="<?php echo "A+"; ?>">
-            <img src="../assets/images/Avatar.jpg" alt="volunteer 1">
-          </div>
-          <p>Rajkishor Thakur</p>
-          <div class="location flex">
-            <img src="../assets//images/Location.svg">
-            <p>Pupri</p>
-          </div>
-        </div>
-        <div class="volunteer-card card flex-column">
-          <div class="img-box" data-blood-type="<?php echo "A+"; ?>">
-            <img src="../assets/images/Avatar.jpg" alt="volunteer 1">
-          </div>
-          <p>Rajkishor Thakur</p>
-          <div class="location flex">
-            <img src="../assets//images/Location.svg">
-            <p>Pupri</p>
-          </div>
-        </div>
+        <!-- Donors will be dynamically populated here -->
       </div>
     </div>
 
@@ -169,7 +90,7 @@ include('../config/init.php');
       </div>
       <form class="form flex-column w-100" action="#" method="get">
         <div class="input-group w-100">
-          <select class="w-100" name="blood-type" placeholder="Select Blood Type">
+          <select class="w-100" id="blood-group" placeholder="Select Blood Type">
             <!-- Adding blood types -->
             <option value="" selected disabled>Select Blood Type</option>
             <option value="A+">A+</option>
@@ -184,15 +105,17 @@ include('../config/init.php');
           <img src="../assets/images/white-drop.svg">
         </div>
         <div class="input-group w-100">
-          <input class="w-100" type="text" name="city" placeholder="City Name">
+          <input class="w-100" type="text" id="city" placeholder="City Name">
           <img src="../assets/images/Location.svg">
         </div>
-        <button type="submit" class="btn Hollow-btn  w-100">Search</button>
+        <button class="btn Hollow-btn w-100" id="search-blood-btn">Search</button>
       </form>
       <img src="../assets/images/search-blood.jpg" class="search-blood" alt="Search Blood">
     </div>
-  </section>
+    <div id="search-results" class=" container donor-list grid w-100">
 
+    </div>
+  </section>
   <!------------- Search Blood Section End ------------->
 
   <!------------- Footer Section Start ------------->
@@ -205,8 +128,7 @@ include('../config/init.php');
       </div>
       <div class="footer__links flex-column">
         <div class="col1 flex-column">
-          <a href="#">Volunteer</a>
-          <a href="#">Donor</a>
+          <a href="#Volunteers">Volunteer</a>
           <a href="#Donor">Donate</a>
         </div>
         <div class="col2 flex-column">
@@ -257,7 +179,18 @@ include('../config/init.php');
     </div>
   </footer>
   <!------------- Footer Section End ------------->
+
+  <!-------- Back to top navigation button -------->
+  <button onclick="topFunction()" class="back-to-top" id="myBtn">
+    <img src="../assets/images/Syringe.png">
+  </button>
+
   <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/ScrollToTop.js"></script>
+  <script src="../assets/js/jQuery.js"></script>
+  <script src="../assets/js/ajax/volunteers.js"></script>
+  <script src="../assets/js/ajax/searchBlood.js"></script>
+  <script src="../assets/js/ajax/fieldValidations.js"></script>
 </body>
 
 </html>

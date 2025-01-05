@@ -8,7 +8,7 @@
   --Dark-Red: hsl(357, 92%, 30%);
   --Very-Dark-Red: hsl(0, 100%, 30%);
   --Light-Green: hsla(120, 100%, 25%, 0.7);
-  --Green: hsl(120, 100%, 25%);
+  --Green: hsl(122, 39%, 49%);
   --Light-Yellow: hsla(54, 55%, 51%, 0.5);
   --Yellow: hsl(54, 55%, 51%);
   --Very-light-Blue: hsl(200, 43%, 95%);
@@ -136,7 +136,7 @@ select {
   :root {
     /* font-sizes */
     --fs-900: 4rem;
-    --fs-800: 2.5rem;
+    --fs-800: 2.25rem;
     --fs-500: 1.25rem;
   }
 }
@@ -145,7 +145,7 @@ select {
   :root {
     /* font-sizes */
     --fs-900: clamp(5rem, 5vw + 1rem, 6rem);
-    --fs-800: 3rem;
+    --fs-800: 2.5rem;
     --fs-500: 1.56rem;
   }
 }
@@ -250,7 +250,7 @@ thead th {
   background-color: var(--Red-Header);
   color: white;
   padding: 10px;
-  font-size: 16px;
+  font-size: 0.75rem;
   border-radius: 5px;
 }
 
@@ -285,6 +285,7 @@ tbody td input {
 .input-group input,
 .input-group select,
 .input-group textarea {
+  width: 100%;
   padding: 1rem 1.25rem;
   border-radius: 5px;
   -webkit-box-shadow: 0px 2px 3px #8f95a3;
@@ -294,6 +295,7 @@ tbody td input {
 }
 
 .input-group textarea:-moz-read-only,
+.input-group select:disabled,
 .input-group input:-moz-read-only {
   background-color: var(--Very-light-Blue);
   color: var(--Black);
@@ -301,10 +303,46 @@ tbody td input {
 }
 
 .input-group textarea:read-only,
+.input-group select:disabled,
 .input-group input:read-only {
   background-color: var(--Very-light-Blue);
   color: var(--Black);
   font-weight: 500;
+}
+
+.input-group select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.carousel-indicators {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  bottom: 0px;
+  --gap: 0.5rem;
+}
+
+.carousel-indicators .dot {
+  height: 12px;
+  width: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.carousel-indicators .dot.active {
+  background-color: #f14d4d;
+}
+
+.msg {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
 }
 
 /* ------------------- */
@@ -438,6 +476,38 @@ tbody td input {
   background-color: #f44336;
 }
 
+/* Style for the status column */
+.status {
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+/* Green for approved status */
+.status.Approved {
+  color: var(--White);
+  background-color: #4caf50;
+}
+
+/* Yellow for pendign status */
+.status.Pending {
+  color: var(--White);
+  background-color: var(--Yellow);
+}
+
+/* Red for Rejected status */
+.status.Rejected,
+.status.Cancelled {
+  color: var(--White);
+  background-color: #f44336;
+}
+
+/* Blue for Completed status */
+.status.Completed {
+  color: var(--White);
+  background-color: var(--Blue);
+}
+
 .w-100 {
   width: 100%;
 }
@@ -509,6 +579,19 @@ tbody td input {
   cursor: pointer;
 }
 
+.Blue-btn {
+  color: var(--White);
+  background-color: var(--Blue);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  outline: none;
+  border: none;
+  max-width: 250px;
+  cursor: pointer;
+}
+
 .disabled {
   pointer-events: none;
   opacity: 0.5;
@@ -516,6 +599,10 @@ tbody td input {
 
 .text-center {
   text-align: center;
+}
+
+.bold {
+  font-weight: 600;
 }
 
 .no-scroll {
@@ -538,6 +625,42 @@ tbody td input {
 
 .ff-Inter {
   font-family: var(--ff-Inter);
+}
+
+.back-to-top {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: var(--Red);
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 18px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  overflow: visible;
+}
+
+.back-to-top:hover {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+}
+
+.back-to-top img {
+  width: 30px;
+  -webkit-transform: translateY(-20px) scale(2);
+          transform: translateY(-20px) scale(2);
+}
+
+@media screen and (min-width: 48em) {
+  .back-to-top img {
+    width: 50px;
+  }
 }
 
 .navbar .hambergur {
@@ -905,6 +1028,11 @@ tbody td input {
   position: relative;
 }
 
+.heroes-section .volunteer-list .volunteer-card .img-box img {
+  width: 50px;
+  border-radius: 50%;
+}
+
 .heroes-section .volunteer-list .volunteer-card .img-box::after {
   position: absolute;
   content: "";
@@ -920,7 +1048,7 @@ tbody td input {
 
 .heroes-section .volunteer-list .volunteer-card .img-box::before {
   position: absolute;
-  content: "A+";
+  content: attr(data-blood-type);
   top: -25px;
   right: -28px;
   padding: 5px 10px;
@@ -1051,6 +1179,60 @@ tbody td input {
   .search-section .container .search-blood {
     max-width: 65%;
   }
+}
+
+.search-section .donor-list {
+  max-width: 62.5rem;
+  -ms-grid-columns: (minmax(12.5rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+  --gap: 2rem;
+}
+
+.search-section .donor-list .donor-card {
+  --gap: 0.875rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.search-section .donor-list .donor-card .img-box {
+  position: relative;
+}
+
+.search-section .donor-list .donor-card .img-box img {
+  width: 50px;
+  border-radius: 50%;
+}
+
+.search-section .donor-list .donor-card .img-box::after {
+  position: absolute;
+  content: "";
+  background: url("../images/Red-drop.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: -10px;
+  right: -5px;
+  width: 20px;
+  height: 25px;
+}
+
+.search-section .donor-list .donor-card .img-box::before {
+  position: absolute;
+  content: attr(data-blood-type);
+  top: -25px;
+  right: -28px;
+  padding: 5px 10px;
+  font-size: 14px;
+  color: #000;
+  font-weight: 700;
+}
+
+.search-section .donor-list .donor-card .location {
+  --gap: 0.5rem;
 }
 
 .footer {

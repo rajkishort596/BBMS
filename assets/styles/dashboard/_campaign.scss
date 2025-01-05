@@ -1,0 +1,196 @@
+.donor-dashboard {
+  .campaign {
+    background-color: var(--White);
+    border-radius: 2vw;
+    min-height: 100%;
+    .Info-section {
+      // display: none;
+      .heading {
+        h2 {
+          font-weight: 600;
+        }
+
+        p {
+          color: var(--Dark-Gray);
+          font-size: 0.875rem;
+          max-width: 700px;
+          margin: 0 auto;
+        }
+      }
+      #upcoming-campaign {
+        align-items: center;
+        position: relative;
+        padding: 2rem 0rem;
+      }
+      .upcoming-campaign-container {
+        overflow-x: hidden;
+        width: 290px;
+        @media screen and (min-width: 48em) {
+          width: 615px;
+        }
+        .campaign-carousel {
+          width: 300%;
+          align-items: center;
+          justify-content: flex-start;
+          transition: transform 0.5s ease-in-out;
+          padding: 0.5rem;
+          .campaign-card {
+            max-width: 280px;
+            --gap: 1rem;
+            align-items: center;
+            h4 {
+              font-size: 1.25rem;
+              font-weight: 700;
+              margin-bottom: 1rem;
+            }
+            h5 {
+              font-size: 1rem;
+              font-weight: 600;
+            }
+            .duration p,
+            .location p,
+            .organizer P {
+              font-size: 0.75rem;
+            }
+            .location svg {
+              transform: scale(0.75);
+            }
+            .description {
+              font-size: 0.75rem;
+              color: var(--Dark-Gray);
+              text-align: center;
+            }
+            .detail-link {
+              --gap: 0rem;
+              align-items: center;
+              color: var(--Blue);
+              text-decoration: underline;
+              svg {
+                transform: scale(0.5);
+                path {
+                  fill: var(--Blue);
+                }
+              }
+            }
+            button {
+              padding: 0.5rem 1.5rem;
+              font-size: 1.25rem;
+            }
+          }
+        }
+      }
+    }
+    .Details-section {
+      display: none;
+      align-items: center;
+      .Details-heading {
+        align-items: center;
+        .duration,
+        .location {
+          --gap: 0.5rem;
+          @media screen and (min-width: 48em) {
+            --gap: 1rem;
+          }
+        }
+        .description {
+          font-size: 1rem;
+          color: var(--Dark-Gray);
+          max-width: 600px;
+          margin: 0 auto;
+        }
+      }
+      .map {
+        width: 100%;
+        place-items: center;
+        height: 250px;
+        background-color: var(--Gray);
+        border-radius: 25px;
+        @media screen and (min-width: 48em) {
+          width: 80%;
+          --gap: 1rem;
+        }
+      }
+      .join-now-btn {
+        padding: 0.5rem 1.5rem;
+        font-size: 1.25rem;
+      }
+    }
+    .Registration-section {
+      display: none;
+      h2 {
+        font-size: var(--fs-800);
+      }
+      .form {
+        align-items: center;
+        --gap: 2.5rem;
+        &__container {
+          --gap: 1rem;
+          width: 100%;
+          max-width: 900px;
+          grid-template-columns: 1fr;
+          @media screen and (min-width: 48em) {
+            --gap: 1.5rem;
+            grid-template-columns: 1fr 1fr;
+          }
+          .input-group {
+            input,
+            select {
+              padding: 0.5rem 1rem;
+            }
+            select {
+              appearance: none;
+              &:disabled {
+                background-color: var(--Very-light-Blue);
+                opacity: 1;
+                color: var(--Black);
+              }
+            }
+          }
+        }
+        .confirm-checkbox {
+          --gap: 1rem;
+          input {
+            cursor: pointer;
+            margin: 5px;
+            transform: scale(2);
+          }
+          label {
+            cursor: pointer;
+            color: var(--Red);
+          }
+        }
+        .register-btn {
+          max-width: unset;
+          letter-spacing: 1.5px;
+          padding: 0.75rem 1.25rem;
+          @media screen and (min-width: 48em) {
+          }
+        }
+      }
+    }
+    .confirmation-section {
+      min-height: 75vh;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      --gap: 3.5rem;
+      img {
+        max-width: 50px;
+      }
+      p.bold {
+        font-weight: 600;
+      }
+      .confirmation-details {
+        align-items: center;
+        --gap: 1.5rem;
+      }
+      .registration-details {
+        align-items: center;
+        --gap: 1.5rem;
+        p {
+          color: var(--Dark-Gray);
+        }
+      }
+    }
+  }
+}

@@ -22,6 +22,84 @@ body {
     height: 100%;
   }
 }
+.donor-dashboard,
+.recipient-dashboard {
+  .welcome__card {
+    --gap: 0.5rem;
+    gap: 3.5rem;
+    grid-column: 1/2;
+    grid-row: 1/2;
+    width: 100%;
+    max-width: unset;
+    .welcome {
+      font-size: 1rem;
+      color: var(--Black);
+      font-weight: 500;
+    }
+    .username {
+      font-size: 1.25rem;
+      color: var(--Black);
+      font-weight: 700;
+    }
+    .blood-group {
+      position: relative;
+      &::after {
+        content: attr(data-blood-type);
+        position: absolute;
+        top: -15px;
+        right: -25px;
+        padding: 5px 10px;
+        font-size: 14px;
+        color: #000;
+        font-weight: 700;
+      }
+    }
+    .last-donated {
+      color: var(--Black);
+      font-size: 0.875rem;
+    }
+    .location {
+      p {
+        font-size: 0.75rem;
+        color: var(--Black);
+      }
+      img {
+        width: 20px;
+        aspect-ratio: 1;
+      }
+    }
+    .quantity {
+      img {
+        width: 30px;
+      }
+      p {
+        font-weight: 700;
+      }
+    }
+  }
+  .profile-status {
+    max-width: unset;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    grid-column: 1/2;
+    grid-row: 2/3;
+    @media screen and (min-width: 48em) {
+      grid-column: 2/3;
+      grid-row: 1/2;
+    }
+    .profile-info {
+      --gap: 0.5rem;
+      align-items: center;
+      h3 {
+        font-weight: 600;
+      }
+    }
+    a.btn {
+      padding: 0.5rem 2.5rem;
+    }
+  }
+}
 /*-----------------------Modal styles-----------------------*/
 .modal {
   display: none;
@@ -36,10 +114,15 @@ body {
   padding: 2rem;
   background-color: var(--White);
   box-shadow: 5px 5px 20px var(--Black);
+  @media screen and (max-width: 48em) {
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
   .close-btn {
     position: absolute;
-    right: 32px;
-    top: 32px;
+    right: 20px;
+    top: 20px;
     cursor: pointer;
     transition: all 0.5s ease-in-out;
     &:hover {

@@ -43,8 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = mysqli_query($conn, $sql);
         $user = mysqli_fetch_assoc($result);
         if ($user && password_verify($password, $user['password'])) {
+            $_SESSION['id'] = $user[$user_type . '_id'];
             $_SESSION['user'] = $user['name'];
             $_SESSION['email'] = $user['email'];
+            $_SESSION['usertype'] = $user_type;
             if ($user_type == 'donor') {
                 header("Location: " . $SITEURL . "public/donor/dashboard.php");
                 exit(); // Ensure no further code is executed after the redirect

@@ -1,0 +1,201 @@
+.donate-blood {
+  background-color: var(--White);
+  border-radius: 2vw;
+  min-height: 100%;
+  /*------------Info section styles------------*/
+  .Info-section {
+    height: 100%;
+    align-items: center;
+    justify-content: space-around;
+    --gap: 3.5rem;
+    .accordian {
+      width: 100%;
+      max-width: 570px;
+      .Questions__container {
+        --gap: 2rem;
+        align-items: center;
+        max-width: 570px;
+        .questions {
+          --gap: 0.5rem;
+          padding-bottom: 1rem;
+          border-bottom: 2px solid var(--Dark-Gray);
+          .question {
+            cursor: pointer;
+            justify-content: space-between;
+            align-items: center;
+            h4 {
+              line-height: 1;
+              font-size: 1rem;
+              font-weight: 500;
+            }
+            svg {
+              z-index: 1000;
+              transition: all 0.25s ease-in-out;
+            }
+          }
+          .answer {
+            color: var(--Dark-Gray);
+            font-size: 0.875rem;
+            display: none;
+            @media screen and (min-width: 48em) {
+              font-size: 1rem;
+            }
+          }
+        }
+        .questions.active {
+          .question {
+            h4 {
+              color: var(--Red);
+            }
+            svg {
+              transform: rotate(180deg);
+              path {
+                stroke: #f00;
+              }
+            }
+          }
+          .answer {
+            display: block;
+          }
+        }
+      }
+    }
+    .donate-btn {
+    }
+  }
+  .heading-box {
+    --gap: 0.5rem;
+    h2 {
+      font-size: var(--fs-800);
+    }
+  }
+  /*------------blood donation section styles------------*/
+  .blood-donation-section {
+    display: none;
+    min-height: 75vh;
+    position: relative;
+    justify-content: space-between;
+    .Eligibility-section {
+      // display: none;
+      align-items: center;
+      height: 100%;
+      @media screen and (min-width: 48em) {
+        --gap: 2rem;
+      }
+      .eligibility {
+        .checkboxes {
+          grid-template-columns: 1fr;
+          --gap: 1.5rem;
+          column-gap: 4rem;
+          max-width: 600px;
+          @media screen and (min-width: 48em) {
+            grid-template-columns: 1fr 1fr;
+          }
+          .checkbox {
+            --gap: 2rem;
+            input {
+              margin: 5px;
+              transform: scale(2);
+              cursor: pointer;
+            }
+            label {
+              font-family: var(--Poppins);
+              font-weight: 500;
+              font-size: 1rem;
+              color: var(--Dark-Gray);
+              cursor: pointer;
+              @media screen and (min-width: 48em) {
+                font-size: 1.25rem;
+              }
+            }
+          }
+        }
+      }
+      .eligibility-result {
+        display: none;
+        --gap: 0.5rem;
+        img {
+          width: 30px;
+        }
+      }
+      .check-eligibility-btn {
+        border-radius: 10px;
+      }
+    }
+    .appointment-section {
+      display: none;
+      height: 100%;
+      h2 {
+        font-size: var(--fs-800);
+      }
+      .form {
+        align-items: center;
+        --gap: 2.5rem;
+        &__container {
+          --gap: 1rem;
+          width: 100%;
+          max-width: 900px;
+          grid-template-columns: 1fr;
+          @media screen and (min-width: 48em) {
+            --gap: 1.5rem;
+            grid-template-columns: 1fr 1fr;
+          }
+          .input-group {
+            input,
+            select {
+              padding: 0.5rem 1rem;
+            }
+            select {
+              appearance: none;
+              &:disabled {
+                background-color: var(--Very-light-Blue);
+                opacity: 1;
+                color: var(--Black);
+              }
+            }
+          }
+        }
+        .confirm-checkbox {
+          --gap: 1rem;
+          input {
+            cursor: pointer;
+            margin: 5px;
+            transform: scale(2);
+          }
+          label {
+            cursor: pointer;
+            color: var(--Red);
+          }
+        }
+        .appointment-btn {
+          max-width: unset;
+          letter-spacing: 1.5px;
+          padding: 0.75rem 1.25rem;
+          @media screen and (min-width: 48em) {
+          }
+        }
+      }
+    }
+    .confirmation-section {
+      min-height: 75vh;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      --gap: 1.5rem;
+      img {
+        max-width: 50px;
+      }
+      p.bold {
+        font-weight: 600;
+      }
+    }
+    .next-btn {
+      display: block;
+      border-radius: 5px;
+      // margin-top: 2.5rem;
+      // margin-left: auto;
+      align-self: flex-end;
+      padding: 0.5rem 1rem;
+    }
+  }
+}

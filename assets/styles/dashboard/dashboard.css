@@ -8,7 +8,7 @@
   --Dark-Red: hsl(357, 92%, 30%);
   --Very-Dark-Red: hsl(0, 100%, 30%);
   --Light-Green: hsla(120, 100%, 25%, 0.7);
-  --Green: hsl(120, 100%, 25%);
+  --Green: hsl(122, 39%, 49%);
   --Light-Yellow: hsla(54, 55%, 51%, 0.5);
   --Yellow: hsl(54, 55%, 51%);
   --Very-light-Blue: hsl(200, 43%, 95%);
@@ -136,7 +136,7 @@ select {
   :root {
     /* font-sizes */
     --fs-900: 4rem;
-    --fs-800: 2.5rem;
+    --fs-800: 2.25rem;
     --fs-500: 1.25rem;
   }
 }
@@ -145,7 +145,7 @@ select {
   :root {
     /* font-sizes */
     --fs-900: clamp(5rem, 5vw + 1rem, 6rem);
-    --fs-800: 3rem;
+    --fs-800: 2.5rem;
     --fs-500: 1.56rem;
   }
 }
@@ -250,7 +250,7 @@ thead th {
   background-color: var(--Red-Header);
   color: white;
   padding: 10px;
-  font-size: 16px;
+  font-size: 0.75rem;
   border-radius: 5px;
 }
 
@@ -285,6 +285,7 @@ tbody td input {
 .input-group input,
 .input-group select,
 .input-group textarea {
+  width: 100%;
   padding: 1rem 1.25rem;
   border-radius: 5px;
   -webkit-box-shadow: 0px 2px 3px #8f95a3;
@@ -294,6 +295,7 @@ tbody td input {
 }
 
 .input-group textarea:-moz-read-only,
+.input-group select:disabled,
 .input-group input:-moz-read-only {
   background-color: var(--Very-light-Blue);
   color: var(--Black);
@@ -301,10 +303,46 @@ tbody td input {
 }
 
 .input-group textarea:read-only,
+.input-group select:disabled,
 .input-group input:read-only {
   background-color: var(--Very-light-Blue);
   color: var(--Black);
   font-weight: 500;
+}
+
+.input-group select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.carousel-indicators {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  bottom: 0px;
+  --gap: 0.5rem;
+}
+
+.carousel-indicators .dot {
+  height: 12px;
+  width: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.carousel-indicators .dot.active {
+  background-color: #f14d4d;
+}
+
+.msg {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
 }
 
 /* ------------------- */
@@ -438,6 +476,38 @@ tbody td input {
   background-color: #f44336;
 }
 
+/* Style for the status column */
+.status {
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+/* Green for approved status */
+.status.Approved {
+  color: var(--White);
+  background-color: #4caf50;
+}
+
+/* Yellow for pendign status */
+.status.Pending {
+  color: var(--White);
+  background-color: var(--Yellow);
+}
+
+/* Red for Rejected status */
+.status.Rejected,
+.status.Cancelled {
+  color: var(--White);
+  background-color: #f44336;
+}
+
+/* Blue for Completed status */
+.status.Completed {
+  color: var(--White);
+  background-color: var(--Blue);
+}
+
 .w-100 {
   width: 100%;
 }
@@ -509,6 +579,19 @@ tbody td input {
   cursor: pointer;
 }
 
+.Blue-btn {
+  color: var(--White);
+  background-color: var(--Blue);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  outline: none;
+  border: none;
+  max-width: 250px;
+  cursor: pointer;
+}
+
 .disabled {
   pointer-events: none;
   opacity: 0.5;
@@ -516,6 +599,10 @@ tbody td input {
 
 .text-center {
   text-align: center;
+}
+
+.bold {
+  font-weight: 600;
 }
 
 .no-scroll {
@@ -538,6 +625,42 @@ tbody td input {
 
 .ff-Inter {
   font-family: var(--ff-Inter);
+}
+
+.back-to-top {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: var(--Red);
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 18px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  overflow: visible;
+}
+
+.back-to-top:hover {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+}
+
+.back-to-top img {
+  width: 30px;
+  -webkit-transform: translateY(-20px) scale(2);
+          transform: translateY(-20px) scale(2);
+}
+
+@media screen and (min-width: 48em) {
+  .back-to-top img {
+    width: 50px;
+  }
 }
 
 .navbar .hambergur {
@@ -815,7 +938,9 @@ tbody td input {
 }
 
 .dashboard-header .profile img {
-  width: 30px;
+  width: 40px;
+  aspect-ratio: 1;
+  border-radius: 50%;
 }
 
 .dashboard-header .profile .name {
@@ -825,7 +950,7 @@ tbody td input {
 
 .dashboard-header .profile .email {
   font-weight: 400;
-  font-size: 0.56rem;
+  font-size: 0.65rem;
 }
 
 .dashboard-header .logout a {
@@ -940,6 +1065,127 @@ body {
   height: 100%;
 }
 
+.donor-dashboard .welcome__card,
+.recipient-dashboard .welcome__card {
+  --gap: 0.5rem;
+  gap: 3.5rem;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  width: 100%;
+  max-width: unset;
+}
+
+.donor-dashboard .welcome__card .welcome,
+.recipient-dashboard .welcome__card .welcome {
+  font-size: 1rem;
+  color: var(--Black);
+  font-weight: 500;
+}
+
+.donor-dashboard .welcome__card .username,
+.recipient-dashboard .welcome__card .username {
+  font-size: 1.25rem;
+  color: var(--Black);
+  font-weight: 700;
+}
+
+.donor-dashboard .welcome__card .blood-group,
+.recipient-dashboard .welcome__card .blood-group {
+  position: relative;
+}
+
+.donor-dashboard .welcome__card .blood-group::after,
+.recipient-dashboard .welcome__card .blood-group::after {
+  content: attr(data-blood-type);
+  position: absolute;
+  top: -15px;
+  right: -25px;
+  padding: 5px 10px;
+  font-size: 14px;
+  color: #000;
+  font-weight: 700;
+}
+
+.donor-dashboard .welcome__card .last-donated,
+.recipient-dashboard .welcome__card .last-donated {
+  color: var(--Black);
+  font-size: 0.875rem;
+}
+
+.donor-dashboard .welcome__card .location p,
+.recipient-dashboard .welcome__card .location p {
+  font-size: 0.75rem;
+  color: var(--Black);
+}
+
+.donor-dashboard .welcome__card .location img,
+.recipient-dashboard .welcome__card .location img {
+  width: 20px;
+  aspect-ratio: 1;
+}
+
+.donor-dashboard .welcome__card .quantity img,
+.recipient-dashboard .welcome__card .quantity img {
+  width: 30px;
+}
+
+.donor-dashboard .welcome__card .quantity p,
+.recipient-dashboard .welcome__card .quantity p {
+  font-weight: 700;
+}
+
+.donor-dashboard .profile-status,
+.recipient-dashboard .profile-status {
+  max-width: unset;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+}
+
+@media screen and (min-width: 48em) {
+  .donor-dashboard .profile-status,
+  .recipient-dashboard .profile-status {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2/3;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
+  }
+}
+
+.donor-dashboard .profile-status .profile-info,
+.recipient-dashboard .profile-status .profile-info {
+  --gap: 0.5rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.donor-dashboard .profile-status .profile-info h3,
+.recipient-dashboard .profile-status .profile-info h3 {
+  font-weight: 600;
+}
+
+.donor-dashboard .profile-status a.btn,
+.recipient-dashboard .profile-status a.btn {
+  padding: 0.5rem 2.5rem;
+}
+
 /*-----------------------Modal styles-----------------------*/
 .modal {
   display: none;
@@ -958,10 +1204,19 @@ body {
           box-shadow: 5px 5px 20px var(--Black);
 }
 
+@media screen and (max-width: 48em) {
+  .modal {
+    width: 90%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+}
+
 .modal .close-btn {
   position: absolute;
-  right: 32px;
-  top: 32px;
+  right: 20px;
+  top: 20px;
   cursor: pointer;
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
@@ -989,109 +1244,206 @@ body {
 }
 
 .donor-dashboard {
+  position: relative;
   background-color: var(--Grayish-Bg);
 }
 
 .donor-dashboard .container {
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
-  -ms-grid-rows: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 2fr;
+      grid-template-rows: 1fr 1fr 2fr;
   justify-items: center;
   --gap: 2rem;
 }
 
-@media screen and (min-width: 64em) {
+@media screen and (min-width: 48em) {
   .donor-dashboard .container {
-    -ms-grid-columns: 1fr 2fr;
-        grid-template-columns: 1fr 2fr;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     -ms-grid-rows: auto 1fr;
         grid-template-rows: auto 1fr;
   }
 }
 
-.donor-dashboard .container .welcome__card {
-  --gap: 0.5rem;
-  gap: 3.5rem;
+@media screen and (min-width: 64em) {
+  .donor-dashboard .container {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: 250px 1fr;
+        grid-template-rows: 250px 1fr;
+  }
+}
+
+.donor-dashboard .container .Recipient__requests {
+  width: 100%;
+  max-width: unset;
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
   grid-column: 1/2;
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 1;
-  grid-row: 1/2;
-  width: 100%;
-  max-width: unset;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 2;
+  grid-row: 3/5;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
 }
 
-.donor-dashboard .container .welcome__card .welcome {
-  font-size: 1rem;
-  color: var(--Black);
-  font-weight: 500;
+@media screen and (min-width: 48em) {
+  .donor-dashboard .container .Recipient__requests {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1/3;
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 3;
+    grid-row: 2/5;
+  }
 }
 
-.donor-dashboard .container .welcome__card .username {
-  font-size: 1.25rem;
-  color: var(--Black);
-  font-weight: 700;
+@media screen and (min-width: 64em) {
+  .donor-dashboard .container .Recipient__requests {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1/3;
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    grid-row: 2/3;
+  }
 }
 
-.donor-dashboard .container .welcome__card .blood-group {
+.donor-dashboard .container .Recipient__requests__container {
+  overflow-x: hidden;
+  width: 255px;
+}
+
+@media screen and (min-width: 48em) {
+  .donor-dashboard .container .Recipient__requests__container {
+    width: 550px;
+  }
+}
+
+.donor-dashboard .container .Recipient__requests__container .request-carousel {
+  width: 300%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  transition: -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+  padding: 0.5rem;
+}
+
+.donor-dashboard .container .Recipient__requests__container .request-carousel .request-card {
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2rem 1rem;
+  --gap: 0.75rem;
+  max-width: 280px;
+}
+
+.donor-dashboard .container .Recipient__requests__container .request-carousel .request-card .img-box {
   position: relative;
 }
 
-.donor-dashboard .container .welcome__card .blood-group::after {
-  content: attr(data-blood-type);
+.donor-dashboard .container .Recipient__requests__container .request-carousel .request-card .img-box img {
+  width: 50px;
+  border-radius: 50%;
+}
+
+.donor-dashboard .container .Recipient__requests__container .request-carousel .request-card .img-box::before {
   position: absolute;
-  top: -15px;
-  right: -25px;
+  content: attr(data-blood-type);
+  top: -25px;
+  right: -28px;
   padding: 5px 10px;
   font-size: 14px;
   color: #000;
   font-weight: 700;
 }
 
-.donor-dashboard .container .welcome__card .last-donated {
-  color: var(--Black);
-  font-size: 0.875rem;
-}
-
-.donor-dashboard .container .welcome__card .location p {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--Black);
-}
-
-.donor-dashboard .container .welcome__card .location img {
+.donor-dashboard .container .Recipient__requests__container .request-carousel .request-card .img-box::after {
+  position: absolute;
+  content: "";
+  background: url(../../images/Red-drop.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: -10px;
+  right: -5px;
   width: 20px;
-  aspect-ratio: 1;
+  height: 25px;
 }
 
-.donor-dashboard .container .welcome__card .quantity img {
-  width: 30px;
+.donor-dashboard .container .Recipient__requests__container .request-carousel .request-card .info {
+  --gap: 0.55rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.donor-dashboard .container .welcome__card .quantity p {
-  font-weight: 700;
+.donor-dashboard .container .Recipient__requests__container .request-carousel .request-card .info .name {
+  font-size: 0.85rem;
 }
 
-.donor-dashboard .container .donation_chart {
-  display: -ms-grid;
-  display: grid;
-  place-items: center;
-  max-width: unset;
-  width: 100%;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  grid-column: 1/2;
-  -ms-grid-row: 2;
-  -ms-grid-row-span: 1;
-  grid-row: 2/3;
+.donor-dashboard .container .Recipient__requests__container .request-carousel .request-card .info .email {
+  font-size: 0.75rem;
 }
 
-@media screen and (max-width: 48em) {
-  .donor-dashboard .container .donation_chart canvas {
-    width: 100% !important;
-  }
+.donor-dashboard .container .Recipient__requests__container .request-carousel .request-card .location p {
+  font-size: 0.75rem;
+}
+
+.donor-dashboard .container .Recipient__requests__container .request-carousel .request-card .Blood_units span {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.donor-dashboard .container .Recipient__requests__container .request-carousel .request-card .action-btns button {
+  padding: 0.5rem 1.25rem;
+}
+
+.donor-dashboard .container .Recipient__requests .arrows {
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.donor-dashboard .container .Recipient__requests .carousel-indicators {
+  position: unset;
+}
+
+.donor-dashboard .modal {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.donor-dashboard .modal p {
+  position: unset;
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+  font-size: 1rem;
+}
+
+.donor-dashboard .modal button {
+  padding: 0.5rem 3rem;
 }
 
 .admin-dashboard {
@@ -1207,6 +1559,71 @@ body {
 .admin-dashboard .Info_card .box p {
   font-size: 1.25rem;
   font-weight: 700;
+}
+
+.recipient-dashboard {
+  position: relative;
+  background-color: var(--Grayish-Bg);
+}
+
+.recipient-dashboard .container {
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr 1fr 2fr;
+      grid-template-rows: 1fr 1fr 2fr;
+  justify-items: center;
+  --gap: 2rem;
+}
+
+@media screen and (min-width: 48em) {
+  .recipient-dashboard .container {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: 250px 1fr;
+        grid-template-rows: 250px 1fr;
+  }
+}
+
+.recipient-dashboard .container .request-blood {
+  background-color: var(--White);
+  border-radius: 2vw;
+  min-height: 100%;
+}
+
+.recipient-dashboard .container .health-tips {
+  max-width: unset;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.recipient-dashboard .container .health-tips h2 {
+  font-weight: 600;
+}
+
+.recipient-dashboard .container .health-tips .tips-list {
+  --gap: 0.85rem;
+}
+
+.recipient-dashboard .container .health-tips .tips-list li {
+  list-style: square;
+}
+
+@media screen and (min-width: 48em) {
+  .recipient-dashboard .container .health-tips {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1/3;
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    grid-row: 2/3;
+  }
 }
 
 .manage-invenatary-container {
@@ -1405,6 +1822,191 @@ body {
   display: flex;
 }
 
+.manage-location-container {
+  padding: 1rem 2rem !important;
+}
+
+.manage-location-container .section-tab {
+  padding: 1rem;
+  --gap: 1rem;
+  max-width: 900px;
+  margin-inline: auto;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+  background-color: var(--Very-light-Blue);
+}
+
+@media screen and (min-width: 48rem) {
+  .manage-location-container .section-tab {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    background-color: transparent;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    --gap: 3.5rem;
+    padding: 0;
+    border-bottom: 1.5px solid var(--Dark-Gray);
+  }
+}
+
+.manage-location-container .section-tab .tab-link {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0.7;
+  --gap: 0.5rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .manage-location-container .section-tab .tab-link::before {
+    content: "";
+    position: absolute;
+    bottom: -1.5px;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    border-radius: 100px;
+    background-color: var(--Red);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .manage-location-container .section-tab .tab-link {
+    padding: 0.5rem 0rem;
+  }
+}
+
+.manage-location-container .section-tab .tab-link svg {
+  -webkit-transform: scale(0.7);
+          transform: scale(0.7);
+}
+
+.manage-location-container .section-tab .tab-link:hover {
+  opacity: 1;
+}
+
+.manage-location-container .section-tab .tab-link.active {
+  background-color: var(--Soft-Red);
+  position: relative;
+  opacity: 1;
+}
+
+@media screen and (min-width: 48rem) {
+  .manage-location-container .section-tab .tab-link.active::before {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .manage-location-container .section-tab .tab-link.active {
+    background-color: transparent;
+  }
+}
+
+.manage-location-container .section-tab .tab-link.active svg path {
+  fill: var(--White);
+}
+
+@media screen and (min-width: 48rem) {
+  .manage-location-container .section-tab .tab-link.active svg path {
+    fill: var(--Red);
+  }
+}
+
+.manage-location-container .section-tab .tab-link.active p {
+  color: var(--White);
+}
+
+@media screen and (min-width: 48rem) {
+  .manage-location-container .section-tab .tab-link.active p {
+    color: var(--Red);
+  }
+}
+
+.manage-location-container .tab-content {
+  padding: 2rem 0rem;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  --gap: 1.5rem;
+}
+
+.manage-location-container .tab-content h2 {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.manage-location-container .tab-content p {
+  line-height: 1.5;
+  color: var(--Dark-Gray);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.manage-location-container .tab-content .form {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  --gap: 2rem;
+}
+
+.manage-location-container .tab-content .form__container {
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  --gap: 1.5rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .manage-location-container .tab-content .form__container {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
+.manage-location-container .tab-content .form__container .input-group select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.manage-location-container .tab-content .form__container .input-group img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 25px;
+  aspect-ratio: 1;
+  -webkit-transform: translate(-20px, -50%);
+          transform: translate(-20px, -50%);
+}
+
+@media screen and (min-width: 48rem) {
+  .manage-location-container .tab-content .form__container {
+    --gap: 2rem;
+  }
+}
+
+.manage-location-container .tab-content.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.manage-location-container .edit-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
 .admin-dashboard {
   /*-----------------------Overview styles-----------*/
   /*-----------------------Create campaign styles-----------*/
@@ -1537,6 +2139,31 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.admin-dashboard .manage-campaign-container .modal {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.admin-dashboard .manage-campaign-container .modal p {
+  position: unset;
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+  font-size: 1rem;
+}
+
+.admin-dashboard .manage-campaign-container .modal .btn {
+  padding: 0.5rem 3rem;
 }
 
 .admin-dashboard .overview-container {
@@ -1702,7 +2329,7 @@ body {
 
 @media screen and (min-width: 48em) {
   .admin-dashboard .upcoming-campaign-container {
-    width: 580px;
+    width: 585px;
   }
 }
 
@@ -1794,7 +2421,7 @@ body {
           transform: translateY(-50%);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48em) {
   .arrows {
     display: none;
   }
@@ -1804,25 +2431,6 @@ body {
   padding: 1rem;
   border-radius: 5px;
   background-color: var(--Very-light-Blue);
-  cursor: pointer;
-}
-
-.carousel-indicators {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  position: absolute;
-  bottom: 0px;
-  --gap: 0.5rem;
-}
-
-.carousel-indicators .dot {
-  height: 12px;
-  width: 12px;
-  background-color: #f14d4d;
-  border-radius: 50%;
-  display: inline-block;
-  margin: 0 5px;
   cursor: pointer;
 }
 
@@ -1892,6 +2500,10 @@ body {
   fill: var(--Red);
 }
 
+.manage-profile-container .profile-section .profile-header-text {
+  font-weight: 600;
+}
+
 .manage-profile-container .profile-section .camera-icon {
   position: absolute;
   width: 30px;
@@ -1950,10 +2562,38 @@ body {
   height: 85px;
 }
 
+.manage-profile-container .profile-header #profilePic {
+  display: none;
+}
+
+.manage-profile-container .profile-pic-form .profile-header {
+  margin: 0;
+}
+
+.manage-profile-container .profile-pic-form .upload-btn {
+  padding: 0.5rem 1.25rem;
+  letter-spacing: 1.5px;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 48em) {
+  .manage-profile-container .profile-pic-form {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    --gap: 5rem;
+  }
+}
+
 .manage-profile-container .form {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .manage-profile-container .form__container {
@@ -2020,8 +2660,7 @@ body {
 }
 
 @media screen and (max-width: 75em) {
-  .manage-profile-container .form__container .input-group:nth-child(3),
-  .manage-profile-container .form__container .input-group:nth-child(6) {
+  .manage-profile-container .form__container .input-group:nth-child(4) {
     -ms-grid-column: 1;
     -ms-grid-column-span: 1;
     grid-column: 1/2;
@@ -2029,7 +2668,7 @@ body {
 }
 
 @media screen and (max-width: 75em) {
-  .manage-profile-container .form__container .input-group:nth-child(4) {
+  .manage-profile-container .form__container .input-group:nth-child(5) {
     -ms-grid-column: 2;
     -ms-grid-column-span: 1;
     grid-column: 2/3;
@@ -2055,12 +2694,58 @@ body {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-column: 1/3;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .manage-profile-container .form__container .form-actions button {
   padding: 0.5rem 1rem;
   letter-spacing: 1.5px;
   font-size: 1rem;
+}
+
+@media screen and (min-width: 48em) {
+  .manage-profile-container .form__container .form-actions button {
+    padding: 1rem 3rem;
+  }
+}
+
+.manage-profile-container .form__container .form-actions a {
+  color: var(--Blue);
+  text-decoration: underline;
+  font-weight: 400;
+}
+
+.manage-profile-container .form.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (min-width: 75em) {
+  .manage-profile-container .address-form .form__container .input-group:nth-of-type(odd) {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+  }
+}
+
+@media screen and (min-width: 75em) {
+  .manage-profile-container .address-form .form__container .input-group:nth-of-type(even) {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2/3;
+  }
+}
+
+@media screen and (max-width: 48em) {
+  .manage-profile-container .address-form .form__container .input-group:nth-child(4),
+  .manage-profile-container .address-form .form__container .input-group:nth-child(5) {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1/3;
+  }
 }
 
 .manage-profile-container .address-form .form__container .input-group:nth-child(6) {
@@ -2107,8 +2792,12 @@ body {
   letter-spacing: 1.5px;
 }
 
-.manage-profile-container .password-form .form__container .input-group,
-.manage-profile-container .password-form .form__container .info {
+.manage-profile-container .password-section .password-form {
+  display: none;
+}
+
+.manage-profile-container .password-section .password-form .form__container .input-group,
+.manage-profile-container .password-section .password-form .form__container .info {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-column: 1/3;
@@ -2116,13 +2805,24 @@ body {
   margin: 0 auto;
 }
 
-.manage-profile-container .password-form .form__container .info {
+.manage-profile-container .password-section .password-form .form__container .info {
   color: var(--Dark-Gray);
   line-height: 1.5;
   font-size: 0.875rem;
 }
 
-.manage-profile-container .password-form .form__container .eye-icon {
+.manage-profile-container .password-section .password-form .form__container .title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--Black);
+  margin-bottom: 0.75rem;
+}
+
+.manage-profile-container .password-section .password-form .form__container .bold {
+  font-weight: 600;
+}
+
+.manage-profile-container .password-section .password-form .form__container .eye-icon {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -2133,12 +2833,973 @@ body {
   cursor: pointer;
 }
 
-.manage-profile-container .password-form .form__container .eye-icon.open {
+.manage-profile-container .password-section .password-form .form__container .eye-icon.open {
   display: none;
 }
 
-.manage-profile-container .password-form .form__container .Change-btn {
-  margin-top: 3rem;
+.manage-profile-container .password-section .password-form .form__container .otp-container {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  --gap: 1rem;
+}
+
+.manage-profile-container .password-section .password-form .form__container .otp-container input {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 3px solid var(--Dark-Gray);
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.manage-profile-container .password-section .password-form .form__container .otp-container input:focus {
+  border: 3px solid var(--Red);
+}
+
+.manage-profile-container .password-section .password-form .form__container .form-actions {
+  --gap: 0.75rem;
+}
+
+.manage-profile-container .password-section .password-form .form__container .form-actions p {
+  color: var(--Dark-Gray);
+}
+
+.manage-profile-container .password-section .password-form .form__container .Red-btn {
+  padding: 1rem 1.25rem;
+  min-width: 230px;
+  letter-spacing: 2.5px;
+}
+
+.manage-profile-container .password-section .password-form.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.manage-profile-container .password-section .carousel-indicators {
+  position: unset;
+}
+
+.donate-blood {
+  background-color: var(--White);
+  border-radius: 2vw;
+  min-height: 100%;
+  /*------------Info section styles------------*/
+  /*------------blood donation section styles------------*/
+}
+
+.donate-blood .Info-section {
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  --gap: 3.5rem;
+}
+
+.donate-blood .Info-section .accordian {
+  width: 100%;
+  max-width: 570px;
+}
+
+.donate-blood .Info-section .accordian .Questions__container {
+  --gap: 2rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 570px;
+}
+
+.donate-blood .Info-section .accordian .Questions__container .questions {
+  --gap: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--Dark-Gray);
+}
+
+.donate-blood .Info-section .accordian .Questions__container .questions .question {
+  cursor: pointer;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.donate-blood .Info-section .accordian .Questions__container .questions .question h4 {
+  line-height: 1;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.donate-blood .Info-section .accordian .Questions__container .questions .question svg {
+  z-index: 1000;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.donate-blood .Info-section .accordian .Questions__container .questions .answer {
+  color: var(--Dark-Gray);
+  font-size: 0.875rem;
+  display: none;
+}
+
+@media screen and (min-width: 48em) {
+  .donate-blood .Info-section .accordian .Questions__container .questions .answer {
+    font-size: 1rem;
+  }
+}
+
+.donate-blood .Info-section .accordian .Questions__container .questions.active .question h4 {
+  color: var(--Red);
+}
+
+.donate-blood .Info-section .accordian .Questions__container .questions.active .question svg {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.donate-blood .Info-section .accordian .Questions__container .questions.active .question svg path {
+  stroke: #f00;
+}
+
+.donate-blood .Info-section .accordian .Questions__container .questions.active .answer {
+  display: block;
+}
+
+.donate-blood .heading-box {
+  --gap: 0.5rem;
+}
+
+.donate-blood .heading-box h2 {
+  font-size: var(--fs-800);
+}
+
+.donate-blood .blood-donation-section {
+  display: none;
+  min-height: 75vh;
+  position: relative;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.donate-blood .blood-donation-section .Eligibility-section {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+@media screen and (min-width: 48em) {
+  .donate-blood .blood-donation-section .Eligibility-section {
+    --gap: 2rem;
+  }
+}
+
+.donate-blood .blood-donation-section .Eligibility-section .eligibility .checkboxes {
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  --gap: 1.5rem;
+  -webkit-column-gap: 4rem;
+          column-gap: 4rem;
+  max-width: 600px;
+}
+
+@media screen and (min-width: 48em) {
+  .donate-blood .blood-donation-section .Eligibility-section .eligibility .checkboxes {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
+.donate-blood .blood-donation-section .Eligibility-section .eligibility .checkboxes .checkbox {
+  --gap: 2rem;
+}
+
+.donate-blood .blood-donation-section .Eligibility-section .eligibility .checkboxes .checkbox input {
+  margin: 5px;
+  -webkit-transform: scale(2);
+          transform: scale(2);
+  cursor: pointer;
+}
+
+.donate-blood .blood-donation-section .Eligibility-section .eligibility .checkboxes .checkbox label {
+  font-family: var(--Poppins);
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--Dark-Gray);
+  cursor: pointer;
+}
+
+@media screen and (min-width: 48em) {
+  .donate-blood .blood-donation-section .Eligibility-section .eligibility .checkboxes .checkbox label {
+    font-size: 1.25rem;
+  }
+}
+
+.donate-blood .blood-donation-section .Eligibility-section .eligibility-result {
+  display: none;
+  --gap: 0.5rem;
+}
+
+.donate-blood .blood-donation-section .Eligibility-section .eligibility-result img {
+  width: 30px;
+}
+
+.donate-blood .blood-donation-section .Eligibility-section .check-eligibility-btn {
+  border-radius: 10px;
+}
+
+.donate-blood .blood-donation-section .appointment-section {
+  display: none;
+  height: 100%;
+}
+
+.donate-blood .blood-donation-section .appointment-section h2 {
+  font-size: var(--fs-800);
+}
+
+.donate-blood .blood-donation-section .appointment-section .form {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  --gap: 2.5rem;
+}
+
+.donate-blood .blood-donation-section .appointment-section .form__container {
+  --gap: 1rem;
+  width: 100%;
+  max-width: 900px;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 48em) {
+  .donate-blood .blood-donation-section .appointment-section .form__container {
+    --gap: 1.5rem;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
+.donate-blood .blood-donation-section .appointment-section .form__container .input-group input,
+.donate-blood .blood-donation-section .appointment-section .form__container .input-group select {
+  padding: 0.5rem 1rem;
+}
+
+.donate-blood .blood-donation-section .appointment-section .form__container .input-group select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.donate-blood .blood-donation-section .appointment-section .form__container .input-group select:disabled {
+  background-color: var(--Very-light-Blue);
+  opacity: 1;
+  color: var(--Black);
+}
+
+.donate-blood .blood-donation-section .appointment-section .form .confirm-checkbox {
+  --gap: 1rem;
+}
+
+.donate-blood .blood-donation-section .appointment-section .form .confirm-checkbox input {
+  cursor: pointer;
+  margin: 5px;
+  -webkit-transform: scale(2);
+          transform: scale(2);
+}
+
+.donate-blood .blood-donation-section .appointment-section .form .confirm-checkbox label {
+  cursor: pointer;
+  color: var(--Red);
+}
+
+.donate-blood .blood-donation-section .appointment-section .form .appointment-btn {
+  max-width: unset;
+  letter-spacing: 1.5px;
+  padding: 0.75rem 1.25rem;
+}
+
+.donate-blood .blood-donation-section .confirmation-section {
+  min-height: 75vh;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  --gap: 1.5rem;
+}
+
+.donate-blood .blood-donation-section .confirmation-section img {
+  max-width: 50px;
+}
+
+.donate-blood .blood-donation-section .confirmation-section p.bold {
+  font-weight: 600;
+}
+
+.donate-blood .blood-donation-section .next-btn {
+  display: block;
+  border-radius: 5px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  padding: 0.5rem 1rem;
+}
+
+.donation-history,
+.request-status,
+.request-history {
+  background-color: var(--White);
+  border-radius: 2vw;
+  min-height: 100%;
+}
+
+.donation-history .heading h2,
+.request-status .heading h2,
+.request-history .heading h2 {
+  font-weight: 600;
+}
+
+.donation-history .filter-section,
+.request-status .filter-section,
+.request-history .filter-section {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (min-width: 48em) {
+  .donation-history .filter-section,
+  .request-status .filter-section,
+  .request-history .filter-section {
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 48em) {
+  .donation-history .filter-section .date-filter,
+  .request-status .filter-section .date-filter,
+  .request-history .filter-section .date-filter {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+.donation-history .filter-section .location-filter .input-group,
+.request-status .filter-section .location-filter .input-group,
+.request-history .filter-section .location-filter .input-group {
+  position: relative;
+}
+
+.donation-history .filter-section .location-filter .input-group img,
+.request-status .filter-section .location-filter .input-group img,
+.request-history .filter-section .location-filter .input-group img {
+  position: absolute;
+  right: 1rem;
+  bottom: 0%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.donation-history .filter-section .filter-Icon,
+.request-status .filter-section .filter-Icon,
+.request-history .filter-section .filter-Icon {
+  padding: 1rem;
+}
+
+.donation-history .filter-section .filter-Icon img,
+.request-status .filter-section .filter-Icon img,
+.request-history .filter-section .filter-Icon img {
+  width: 50px;
+  cursor: pointer;
+}
+
+.donation-history .print-btn,
+.request-status .print-btn,
+.request-history .print-btn {
+  display: block;
+  border-radius: 5px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-top: auto;
+  padding: 0.5rem 1rem;
+}
+
+.request-status .filter-section .filter-Icon {
+  padding: 0.5rem;
+}
+
+.request-status .filter-section .filter-Icon img {
+  width: 30px;
+}
+
+.donor-dashboard .campaign {
+  background-color: var(--White);
+  border-radius: 2vw;
+  min-height: 100%;
+}
+
+.donor-dashboard .campaign .Info-section .heading h2 {
+  font-weight: 600;
+}
+
+.donor-dashboard .campaign .Info-section .heading p {
+  color: var(--Dark-Gray);
+  font-size: 0.875rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.donor-dashboard .campaign .Info-section #upcoming-campaign {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  padding: 2rem 0rem;
+}
+
+.donor-dashboard .campaign .Info-section .upcoming-campaign-container {
+  overflow-x: hidden;
+  width: 290px;
+}
+
+@media screen and (min-width: 48em) {
+  .donor-dashboard .campaign .Info-section .upcoming-campaign-container {
+    width: 615px;
+  }
+}
+
+.donor-dashboard .campaign .Info-section .upcoming-campaign-container .campaign-carousel {
+  width: 300%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  transition: -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+  padding: 0.5rem;
+}
+
+.donor-dashboard .campaign .Info-section .upcoming-campaign-container .campaign-carousel .campaign-card {
+  max-width: 280px;
+  --gap: 1rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.donor-dashboard .campaign .Info-section .upcoming-campaign-container .campaign-carousel .campaign-card h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.donor-dashboard .campaign .Info-section .upcoming-campaign-container .campaign-carousel .campaign-card h5 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.donor-dashboard .campaign .Info-section .upcoming-campaign-container .campaign-carousel .campaign-card .duration p,
+.donor-dashboard .campaign .Info-section .upcoming-campaign-container .campaign-carousel .campaign-card .location p,
+.donor-dashboard .campaign .Info-section .upcoming-campaign-container .campaign-carousel .campaign-card .organizer P {
+  font-size: 0.75rem;
+}
+
+.donor-dashboard .campaign .Info-section .upcoming-campaign-container .campaign-carousel .campaign-card .location svg {
+  -webkit-transform: scale(0.75);
+          transform: scale(0.75);
+}
+
+.donor-dashboard .campaign .Info-section .upcoming-campaign-container .campaign-carousel .campaign-card .description {
+  font-size: 0.75rem;
+  color: var(--Dark-Gray);
+  text-align: center;
+}
+
+.donor-dashboard .campaign .Info-section .upcoming-campaign-container .campaign-carousel .campaign-card .detail-link {
+  --gap: 0rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: var(--Blue);
+  text-decoration: underline;
+}
+
+.donor-dashboard .campaign .Info-section .upcoming-campaign-container .campaign-carousel .campaign-card .detail-link svg {
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+}
+
+.donor-dashboard .campaign .Info-section .upcoming-campaign-container .campaign-carousel .campaign-card .detail-link svg path {
+  fill: var(--Blue);
+}
+
+.donor-dashboard .campaign .Info-section .upcoming-campaign-container .campaign-carousel .campaign-card button {
+  padding: 0.5rem 1.5rem;
+  font-size: 1.25rem;
+}
+
+.donor-dashboard .campaign .Details-section {
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.donor-dashboard .campaign .Details-section .Details-heading {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.donor-dashboard .campaign .Details-section .Details-heading .duration,
+.donor-dashboard .campaign .Details-section .Details-heading .location {
+  --gap: 0.5rem;
+}
+
+@media screen and (min-width: 48em) {
+  .donor-dashboard .campaign .Details-section .Details-heading .duration,
+  .donor-dashboard .campaign .Details-section .Details-heading .location {
+    --gap: 1rem;
+  }
+}
+
+.donor-dashboard .campaign .Details-section .Details-heading .description {
+  font-size: 1rem;
+  color: var(--Dark-Gray);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.donor-dashboard .campaign .Details-section .map {
+  width: 100%;
+  place-items: center;
+  height: 250px;
+  background-color: var(--Gray);
+  border-radius: 25px;
+}
+
+@media screen and (min-width: 48em) {
+  .donor-dashboard .campaign .Details-section .map {
+    width: 80%;
+    --gap: 1rem;
+  }
+}
+
+.donor-dashboard .campaign .Details-section .join-now-btn {
+  padding: 0.5rem 1.5rem;
+  font-size: 1.25rem;
+}
+
+.donor-dashboard .campaign .Registration-section {
+  display: none;
+}
+
+.donor-dashboard .campaign .Registration-section h2 {
+  font-size: var(--fs-800);
+}
+
+.donor-dashboard .campaign .Registration-section .form {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  --gap: 2.5rem;
+}
+
+.donor-dashboard .campaign .Registration-section .form__container {
+  --gap: 1rem;
+  width: 100%;
+  max-width: 900px;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 48em) {
+  .donor-dashboard .campaign .Registration-section .form__container {
+    --gap: 1.5rem;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
+.donor-dashboard .campaign .Registration-section .form__container .input-group input,
+.donor-dashboard .campaign .Registration-section .form__container .input-group select {
+  padding: 0.5rem 1rem;
+}
+
+.donor-dashboard .campaign .Registration-section .form__container .input-group select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.donor-dashboard .campaign .Registration-section .form__container .input-group select:disabled {
+  background-color: var(--Very-light-Blue);
+  opacity: 1;
+  color: var(--Black);
+}
+
+.donor-dashboard .campaign .Registration-section .form .confirm-checkbox {
+  --gap: 1rem;
+}
+
+.donor-dashboard .campaign .Registration-section .form .confirm-checkbox input {
+  cursor: pointer;
+  margin: 5px;
+  -webkit-transform: scale(2);
+          transform: scale(2);
+}
+
+.donor-dashboard .campaign .Registration-section .form .confirm-checkbox label {
+  cursor: pointer;
+  color: var(--Red);
+}
+
+.donor-dashboard .campaign .Registration-section .form .register-btn {
+  max-width: unset;
+  letter-spacing: 1.5px;
+  padding: 0.75rem 1.25rem;
+}
+
+.donor-dashboard .campaign .confirmation-section {
+  min-height: 75vh;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  --gap: 3.5rem;
+}
+
+.donor-dashboard .campaign .confirmation-section img {
+  max-width: 50px;
+}
+
+.donor-dashboard .campaign .confirmation-section p.bold {
+  font-weight: 600;
+}
+
+.donor-dashboard .campaign .confirmation-section .confirmation-details {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  --gap: 1.5rem;
+}
+
+.donor-dashboard .campaign .confirmation-section .registration-details {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  --gap: 1.5rem;
+}
+
+.donor-dashboard .campaign .confirmation-section .registration-details p {
+  color: var(--Dark-Gray);
+}
+
+.Manage-request-container {
+  --gap: 2rem;
+}
+
+.Manage-request-container .filter-section {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (min-width: 48em) {
+  .Manage-request-container .filter-section {
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+.Manage-request-container .filter-section .filter-Icon {
+  padding: 1rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Manage-request-container .filter-section .filter-Icon img {
+  width: 50px;
+  cursor: pointer;
+}
+
+.Manage-request-container .btn-container {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.recipient-dashboard .request-blood .Request-Blood-section {
+  height: 100%;
+}
+
+.recipient-dashboard .request-blood .Request-Blood-section h2 {
+  font-size: var(--fs-800);
+}
+
+.recipient-dashboard .request-blood .Request-Blood-section .form {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  --gap: 2.5rem;
+}
+
+.recipient-dashboard .request-blood .Request-Blood-section .form__container {
+  --gap: 1rem;
+  width: 100%;
+  max-width: 900px;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 48em) {
+  .recipient-dashboard .request-blood .Request-Blood-section .form__container {
+    --gap: 1.5rem;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
+.recipient-dashboard .request-blood .Request-Blood-section .form__container .input-group input,
+.recipient-dashboard .request-blood .Request-Blood-section .form__container .input-group select {
+  padding: 0.5rem 1rem;
+}
+
+.recipient-dashboard .request-blood .Request-Blood-section .form__container .input-group select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.recipient-dashboard .request-blood .Request-Blood-section .form__container .input-group select:disabled {
+  background-color: var(--Very-light-Blue);
+  opacity: 1;
+  color: var(--Black);
+}
+
+.recipient-dashboard .request-blood .Request-Blood-section .form .confirm-checkbox {
+  --gap: 1rem;
+}
+
+.recipient-dashboard .request-blood .Request-Blood-section .form .confirm-checkbox input {
+  cursor: pointer;
+  margin: 5px;
+  -webkit-transform: scale(2);
+          transform: scale(2);
+}
+
+.recipient-dashboard .request-blood .Request-Blood-section .form .confirm-checkbox label {
+  cursor: pointer;
+  color: var(--Red);
+}
+
+.recipient-dashboard .request-blood .Request-Blood-section .form .request-btn {
+  max-width: unset;
+  letter-spacing: 1.5px;
+  padding: 0.75rem 1.25rem;
+}
+
+.recipient-dashboard .request-blood .confirmation-section {
+  min-height: 75vh;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  --gap: 1.5rem;
+}
+
+.Manage-request-container tr {
+  --gap: 0.5rem;
+}
+
+.Manage-request-container button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+}
+
+.Manage-request-container .print-btn {
+  border-radius: 5px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-top: auto;
+  padding: 0.5rem 1rem;
+}
+
+@media print {
+  /* Hide the print button during print */
+  button {
+    display: none;
+  }
+  /* Make sure the table layout remains the same */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th {
+    border: none !important;
+  }
+  /* Customize the table rows for print, maintain a clean look */
+  tr {
+    border: 1px solid #000;
+  }
+}
+
+.recipient-dashboard .search-blood {
+  background-color: var(--White);
+  border-radius: 2vw;
+  min-height: 100%;
+}
+
+.recipient-dashboard .search-blood .heading {
+  --gap: 0.5rem;
+}
+
+.recipient-dashboard .search-blood .heading h2 {
+  font-weight: 600;
+}
+
+.recipient-dashboard .search-blood .heading p {
+  color: var(--Dark-Gray);
+  font-size: 0.875rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.recipient-dashboard .search-blood .form {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (min-width: 48em) {
+  .recipient-dashboard .search-blood .form {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+.recipient-dashboard .search-blood .form .input-group {
+  position: relative;
+}
+
+.recipient-dashboard .search-blood .form img {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 30px;
+  aspect-ratio: 1;
+  -webkit-transform: translate(-20px, -50%);
+          transform: translate(-20px, -50%);
+}
+
+.recipient-dashboard .search-blood .form button {
+  border-radius: 5px;
   padding: 1rem 2.25rem;
+  border: 1px solid var(--Red);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 3.5px;
+  background: none;
+  border-radius: 13px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  cursor: pointer;
+  color: var(--Red);
+}
+
+.recipient-dashboard .search-blood .form button:hover {
+  color: var(--White);
+  background: var(--Red);
+}
+
+.recipient-dashboard .search-blood .donor-list {
+  max-width: 62.5rem;
+  -ms-grid-columns: (minmax(12.5rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+  --gap: 2rem;
+}
+
+.recipient-dashboard .search-blood .donor-list .donor-card {
+  --gap: 0.875rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.recipient-dashboard .search-blood .donor-list .donor-card .img-box {
+  position: relative;
+}
+
+.recipient-dashboard .search-blood .donor-list .donor-card .img-box img {
+  width: 50px;
+  border-radius: 50%;
+}
+
+.recipient-dashboard .search-blood .donor-list .donor-card .img-box::after {
+  position: absolute;
+  content: "";
+  background: url("../../images/Red-drop.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: -10px;
+  right: -5px;
+  width: 20px;
+  height: 25px;
+}
+
+.recipient-dashboard .search-blood .donor-list .donor-card .img-box::before {
+  position: absolute;
+  content: attr(data-blood-type);
+  top: -25px;
+  right: -28px;
+  padding: 5px 10px;
+  font-size: 14px;
+  color: #000;
+  font-weight: 700;
+}
+
+.recipient-dashboard .search-blood .donor-list .donor-card .location {
+  --gap: 0.5rem;
 }
 /*# sourceMappingURL=dashboard.css.map */

@@ -89,7 +89,33 @@
   color: var(--White);
   background-color: #f44336;
 }
-
+/* Style for the status column */
+.status {
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 3px;
+}
+/* Green for approved status */
+.status.Approved {
+  color: var(--White);
+  background-color: #4caf50;
+}
+/* Yellow for pendign status */
+.status.Pending {
+  color: var(--White);
+  background-color: var(--Yellow);
+}
+/* Red for Rejected status */
+.status.Rejected,
+.status.Cancelled {
+  color: var(--White);
+  background-color: #f44336;
+}
+/* Blue for Completed status */
+.status.Completed {
+  color: var(--White);
+  background-color: var(--Blue);
+}
 .w-100 {
   width: 100%;
 }
@@ -148,12 +174,27 @@
   max-width: 250px;
   cursor: pointer;
 }
+.Blue-btn {
+  color: var(--White);
+  background-color: var(--Blue);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  outline: none;
+  border: none;
+  max-width: 250px;
+  cursor: pointer;
+}
 .disabled {
   pointer-events: none;
   opacity: 0.5;
 }
 .text-center {
   text-align: center;
+}
+.bold {
+  font-weight: 600;
 }
 .no-scroll {
   overflow: hidden;
@@ -172,4 +213,31 @@
 }
 .ff-Inter {
   font-family: var(--ff-Inter);
+}
+.back-to-top {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: var(--Red);
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 18px;
+  transition: all 0.5s;
+  overflow: visible;
+  &:hover {
+    transform: translateY(-5px);
+  }
+  img {
+    width: 30px;
+    @media screen and (min-width: 48em) {
+      width: 50px;
+    }
+    transform: translateY(-20px) scale(2);
+  }
 }
